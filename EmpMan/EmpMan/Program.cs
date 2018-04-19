@@ -16,7 +16,7 @@ namespace EmpMan
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmEmpMan());
+            Application.Run(new Form1());
         }
     }
 }

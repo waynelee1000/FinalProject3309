@@ -46,25 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Client.cs" />
-    <Compile Include="Classes\Employee.cs" />
-    <Compile Include="Classes\EmpManDB.cs" />
-    <Compile Include="Classes\FormController.cs" />
-    <Compile Include="Classes\Manager.cs" />
-    <Compile Include="Classes\Person.cs" />
-    <Compile Include="Classes\PersonList.cs" />
-    <Compile Include="Classes\POManager.cs" />
-    <Compile Include="Classes\Worker.cs" />
-    <Compile Include="frmEmpMan.cs">
+    <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmEmpMan.Designer.cs">
-      <DependentUpon>frmEmpMan.cs</DependentUpon>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmEmpMan.resx">
-      <DependentUpon>frmEmpMan.cs</DependentUpon>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace EmpMan
 {
-    public partial class frmEmpMan : Form
+    public partial class Form1 : Form
     {
-        public frmEmpMan()
+        public Form1()
         {
             InitializeComponent();
-        }
-        
-
-        private void frmEmpMan_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
