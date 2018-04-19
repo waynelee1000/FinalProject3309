@@ -30,19 +30,19 @@ namespace EmpMan
         public static void resetForm(frmEmpMan f)
         {
             //  Reset button components
-            f.btnClear.Enabled = true;
+           // f.btnClear.Enabled = true;
             f.btnDelete.Enabled = false;
-            f.btnEdit.Enabled = false;
-            f.btnToString.Enabled = false;
+            //f.btnEdit.Enabled = false;
+           // f.btnToString.Enabled = false;
             f.btnCreateManager.Enabled = true;
             f.btnCreateManager.Text = "Create Manager";
             f.btnCreateWorker.Enabled = true;
             f.btnCreateWorker.Text = "Create Worker";
             f.btnCreateClient.Enabled = true;
             f.btnCreateClient.Text = "Create Client";
-            f.btnNext.Visible = true;
-            f.btnPrevious.Visible = true;
-            f.btnCancel.Visible = false;
+            //f.btnNext.Visible = true;
+            //f.btnPrevious.Visible = true;
+            //f.btnCancel.Visible = false;
 
             // Reset group components
             f.grpPerson.Enabled = false;
@@ -63,13 +63,13 @@ namespace EmpMan
         public static void formAddMode(frmEmpMan f)
         {
             clear(f);
-            f.btnClear.Enabled = true;
+          //  f.btnClear.Enabled = true;
             f.btnDelete.Enabled = false;
-            f.btnEdit.Enabled = false;
-            f.btnToString.Enabled = false;
-            f.btnNext.Visible = false;
-            f.btnPrevious.Visible = false;
-            f.btnCancel.Visible = true;
+            // f.btnEdit.Enabled = false;
+            //  f.btnToString.Enabled = false;
+            //  f.btnNext.Visible = false;
+            //  f.btnPrevious.Visible = false;
+            //   f.btnCancel.Visible = true;
         }  // end formAddMode
 
 
@@ -79,9 +79,9 @@ namespace EmpMan
             f.btnCreateManager.Enabled = true;
             f.btnCreateWorker.Enabled = true;
             f.btnCreateClient.Enabled = true;
-            f.btnNext.Visible = true;
-            f.btnPrevious.Visible = true;
-            f.btnCancel.Visible = false;
+            //  f.btnNext.Visible = true;
+            //  f.btnPrevious.Visible = true;
+            //  f.btnCancel.Visible = false;
         }  // end activateAddButtons
 
 
@@ -91,9 +91,9 @@ namespace EmpMan
             f.btnCreateManager.Enabled = false;
             f.btnCreateWorker.Enabled = false;
             f.btnCreateClient.Enabled = false;
-            f.btnNext.Visible = false;
-            f.btnPrevious.Visible = false;
-            f.btnCancel.Visible = true;
+            //   f.btnNext.Visible = false;
+            //  f.btnPrevious.Visible = false;
+            //  f.btnCancel.Visible = true;
         }  // end deactivateAddButtons
 
 
