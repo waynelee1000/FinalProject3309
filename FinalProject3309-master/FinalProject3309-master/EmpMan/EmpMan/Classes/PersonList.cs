@@ -26,5 +26,48 @@ namespace EmpMan.Classes
             return num;
         }
 
+        public bool deletePerson(string ID)
+        {
+            bool deletable = false;
+            for (int i = 0; i < personList.Count; i++)
+            {
+
+                if (personList[i].personID == ID)
+                {
+                    personList[i] = null;
+                    deletable = true;
+                }
+            }
+
+            return deletable;
+        }
+
+        public bool displayPersonInList(string ID)
+        {
+            bool display = false;
+            for (int i = 0; i < personList.Count; i++)
+            {
+                if (personList[i].personID == ID)
+                {
+                    if (personList[i].GetType() == typeof(Manager))
+                    {
+
+                    }
+                    if (personList[i].GetType() == typeof(Worker))
+                    {
+
+
+                    }
+                    if (personList[i].GetType() == typeof(Client))
+                    {
+
+                    }
+
+                }
+            }
+
+            return display;
+        }
+
     }
 }
