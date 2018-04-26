@@ -100,7 +100,14 @@ namespace EmpMan
 
         private void btnClearForm_Click(object sender, EventArgs e)
         {
-            Application.Restart();
+            txtClientType.Text = "";
+            txtEmployeeJobTitle.Text = "";
+            txtManagerBonus.Text = "";
+            txtManagerSalary.Text = "";
+            txtPersonBirthDate.Text = "";
+            txtPersonID.Text = "";
+            txtPersonName.Text = "";
+            txtWorkerHourlyPay.Text = "";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -113,37 +120,47 @@ namespace EmpMan
 
         private void btnCreateClient_Click(object sender, EventArgs e)
         {
-            if (!validate.checkName(txtPersonID.Text))
+            if (!(validate.checkName(txtPersonName.Text)))
             {
                 MessageBox.Show("Incorrect Name.");
             }
-            if (!validate.checkID(txtPersonID.Text))
+            else if (!(validate.checkID(txtPersonID.Text)))
             {
                 MessageBox.Show("Incorrect ID.");
             }
-            if (!validate.checkBirthDate(txtPersonBirthDate.Text))
+            else if (!(validate.checkBirthDate(txtPersonBirthDate.Text)))
             {
                 MessageBox.Show("Incorrect Date.");
             }
-            if (!validate.checkName(txtClientType.Text))
+            else if (!(validate.checkName(txtClientType.Text)))
             {
                 MessageBox.Show("Incorrect Client Type.");
             }
+            else
+            {
+                client.personName = txtPersonName.Text;
 
-            client.personName = txtPersonName.Text;
+                client.personID = txtPersonID.Text;
 
-            client.personID = txtPersonID.Text;
-            client.personBirthDate = DateTime.Parse(txtPersonBirthDate.Text);
-            client.ClientType = txtClientType.Text;
+                client.personBirthDate = DateTime.Parse(txtPersonBirthDate.Text);
 
-            personList.addPerson(client);
+                client.ClientType = txtClientType.Text;
+
+                if (personList.addPerson(client))
+                {
+                    MessageBox.Show("Person :" + txtPersonName.Text + " has been added");
+                }
+                else
+                {
+                    MessageBox.Show("ID already exist");
+                }
+            }
+
 
         }
-
-        private void btnCreateManager_Click(object sender, EventArgs e)
+        private void btnCreateManager_Click_1(object sender, EventArgs e)
         {
-
-            if (!validate.checkName(txtPersonID.Text))
+            if (!validate.checkName(txtPersonName.Text))
             {
                 MessageBox.Show("Incorrect Name.");
             }
@@ -164,21 +181,32 @@ namespace EmpMan
                 MessageBox.Show("Incorrect Bonus.");
             }
 
-            manager.personName = txtPersonName.Text;
+            else
+            {
+                manager.personName = txtPersonName.Text;
 
-            manager.personID = txtPersonID.Text;
-            manager.personBirthDate = DateTime.Parse(txtPersonBirthDate.Text);
-            manager.managerSalary = Decimal.Parse(txtManagerSalary.Text);
-            manager.managerBonus = Decimal.Parse(txtManagerBonus.Text);
+                manager.personID = txtPersonID.Text;
+                manager.personBirthDate = DateTime.Parse(txtPersonBirthDate.Text);
+                manager.managerSalary = Decimal.Parse(txtManagerSalary.Text);
+                manager.managerBonus = Decimal.Parse(txtManagerBonus.Text);
 
-            personList.addPerson(manager);
+                if (personList.addPerson(manager))
+                {
+                    MessageBox.Show("Person :" + txtPersonName.Text + " has been added");
+                }
+                else
+                {
+                    MessageBox.Show("ID already exist");
+                }
+            }
+
+
         }
 
-        private void btnCreateWorker_Click(object sender, EventArgs e)
+        private void btnCreateWorker_Click_1(object sender, EventArgs e)
         {
 
-
-            if (!validate.checkName(txtPersonID.Text))
+            if (!validate.checkName(txtPersonName.Text))
             {
                 MessageBox.Show("Incorrect Name.");
             }
@@ -195,31 +223,139 @@ namespace EmpMan
                 MessageBox.Show("Incorrect Hourly Pay.");
             }
 
-            worker.personName = txtPersonName.Text;
+            else
+            {
+                worker.personName = txtPersonName.Text;
 
-            worker.personID = txtPersonID.Text;
-            worker.personBirthDate = DateTime.Parse(txtPersonBirthDate.Text);
-            worker.WorkerHourlyPay = Decimal.Parse(txtWorkerHourlyPay.Text);
+                worker.personID = txtPersonID.Text;
+                worker.personBirthDate = DateTime.Parse(txtPersonBirthDate.Text);
+                worker.WorkerHourlyPay = Decimal.Parse(txtWorkerHourlyPay.Text);
 
-            personList.addPerson(worker);
+                if (personList.addPerson(worker))
+                {
+                    MessageBox.Show("Person :" + txtPersonName.Text + " has been added");
+                }
+                else
+                {
+                    MessageBox.Show("ID already exist");
+                }
+            }
+
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void btnDelete_Click_1(object sender, EventArgs e)
         {
-            if (personList.deletePerson(txtPersonID.Text))
-            {
-                MessageBox.Show("Person is deleted");
-            }
-            else
+
+            if (personList.personList.Count == 0)
             {
                 MessageBox.Show("Person is not deleted");
             }
+
+            else
+            {
+                for (int i = 0; i < personList.personList.Count(); i++)
+                {
+                    if (personList.personList[i].personID == txtPersonID.Text)
+                    {
+                        personList.personList.RemoveAt(i);
+
+                        MessageBox.Show("Person is deleted");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Person is not deleted");
+                    }
+                }
+            }
         }
 
-        private void btnFindDisplay_Click(object sender, EventArgs e)
+        private void btnFindDisplay_Click_1(object sender, EventArgs e)
         {
-            for (int i = 0; i < personList.Count(); i++)
+            if (personList.personList.Count == 0)
             {
+                MessageBox.Show("Person does not exist");
+            }
+            else
+            {
+                for (int i = 0; i < personList.personList.Count; i++)
+                {
+                    if (personList.personList[i].personID == txtPersonID.Text)
+                    {
+                        if (personList.personList[i].GetType() == typeof(Manager))
+                        {
+                            Manager newManager = new Manager();
+                            newManager.Save(this);
+                            MessageBox.Show(newManager.ToString());
+                        }
+                        if (personList.personList[i].GetType() == typeof(Worker))
+                        {
+                            Worker newWorker = new Worker();
+                            newWorker.Save(this);
+                            MessageBox.Show(newWorker.ToString());
+
+                        }
+                        if (personList.personList[i].GetType() == typeof(Client))
+                        {
+                            Client newClient = new Client();
+                            newClient.Save(this);
+                            MessageBox.Show(newClient.ToString());
+                            
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Person does not exist");
+                    }
+                }
+            }
+
+        }
+
+        private void btnEditUpdate_Click(object sender, EventArgs e)
+        {
+            if (personList.personList.Count == 0)
+            {
+                MessageBox.Show("Person does not exist");
+            }
+            else
+            {
+                for (int i = 0; i < personList.personList.Count; i++)
+                {
+                    if (personList.personList[i].personID == txtPersonID.Text)
+                    {
+                        if (personList.personList[i].GetType() == typeof(Manager))
+                        {
+                            Manager newManager = new Manager();
+                            newManager.Save(this);
+                            personList.personList.RemoveAt(i);
+                            personList.personList.Insert(i, newManager);
+                            MessageBox.Show("Changes have been made");
+                        }
+                        if (personList.personList[i].GetType() == typeof(Worker))
+                        {
+                            Worker newWorker = new Worker();
+                            newWorker.Save(this);
+                            personList.personList.RemoveAt(i);
+                            personList.personList.Insert(i, newWorker);
+                            MessageBox.Show("Changes have been made");
+
+                        }
+                        if (personList.personList[i].GetType() == typeof(Client))
+                        {
+                            Client newClient = new Client();
+                            newClient.Save(this);
+                            personList.personList.RemoveAt(i);
+                            personList.personList.Insert(i, newClient);
+                            MessageBox.Show("Changes have been made");
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Person does not exist");
+                    }
+                }
             }
 
         }

@@ -18,3 +18,13 @@ C:\Users\Yuan\Downloads\FinalProject3309-master\FinalProject3309-master\EmpMan\E
 C:\Users\Yuan\Downloads\FinalProject3309-master\FinalProject3309-master\EmpMan\EmpMan\obj\Debug\EmpMan.frmEmpMan.resources
 C:\Users\Yuan\Downloads\FinalProject3309-master\FinalProject3309-master\EmpMan\EmpMan\obj\Debug\EmpMan.Properties.Resources.resources
 C:\Users\Yuan\Downloads\FinalProject3309-master\FinalProject3309-master\EmpMan\EmpMan\obj\Debug\EmpMan.csproj.GenerateResource.Cache
+C:\Users\Wayne\Desktop\github\FinalProject3309\FinalProject3309-master\FinalProject3309-master\EmpMan\EmpMan\bin\Debug\EmpMan.exe.config
+C:\Users\Wayne\Desktop\github\FinalProject3309\FinalProject3309-master\FinalProject3309-master\EmpMan\EmpMan\bin\Debug\EmpMan.exe
+C:\Users\Wayne\Desktop\github\FinalProject3309\FinalProject3309-master\FinalProject3309-master\EmpMan\EmpMan\bin\Debug\EmpMan.pdb
+C:\Users\Wayne\Desktop\github\FinalProject3309\FinalProject3309-master\FinalProject3309-master\EmpMan\EmpMan\obj\Debug\EmpMan.csprojResolveAssemblyReference.cache
+C:\Users\Wayne\Desktop\github\FinalProject3309\FinalProject3309-master\FinalProject3309-master\EmpMan\EmpMan\obj\Debug\EmpMan.frmEmpMan.resources
+C:\Users\Wayne\Desktop\github\FinalProject3309\FinalProject3309-master\FinalProject3309-master\EmpMan\EmpMan\obj\Debug\EmpMan.Properties.Resources.resources
+C:\Users\Wayne\Desktop\github\FinalProject3309\FinalProject3309-master\FinalProject3309-master\EmpMan\EmpMan\obj\Debug\EmpMan.csproj.GenerateResource.Cache
+C:\Users\Wayne\Desktop\github\FinalProject3309\FinalProject3309-master\FinalProject3309-master\EmpMan\EmpMan\obj\Debug\EmpMan.csproj.CoreCompileInputs.cache
+C:\Users\Wayne\Desktop\github\FinalProject3309\FinalProject3309-master\FinalProject3309-master\EmpMan\EmpMan\obj\Debug\EmpMan.exe
+C:\Users\Wayne\Desktop\github\FinalProject3309\FinalProject3309-master\FinalProject3309-master\EmpMan\EmpMan\obj\Debug\EmpMan.pdb
