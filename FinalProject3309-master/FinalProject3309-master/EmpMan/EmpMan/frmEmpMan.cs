@@ -138,13 +138,8 @@ namespace EmpMan
             }
             else
             {
-                client.personName = txtPersonName.Text;
 
-                client.personID = txtPersonID.Text;
-
-                client.personBirthDate = DateTime.Parse(txtPersonBirthDate.Text);
-
-                client.ClientType = txtClientType.Text;
+                client.Save(this);
 
                 if (personList.addPerson(client))
                 {
@@ -183,12 +178,7 @@ namespace EmpMan
 
             else
             {
-                manager.personName = txtPersonName.Text;
-
-                manager.personID = txtPersonID.Text;
-                manager.personBirthDate = DateTime.Parse(txtPersonBirthDate.Text);
-                manager.managerSalary = Decimal.Parse(txtManagerSalary.Text);
-                manager.managerBonus = Decimal.Parse(txtManagerBonus.Text);
+                manager.Save(this);
 
                 if (personList.addPerson(manager))
                 {
@@ -225,11 +215,7 @@ namespace EmpMan
 
             else
             {
-                worker.personName = txtPersonName.Text;
-
-                worker.personID = txtPersonID.Text;
-                worker.personBirthDate = DateTime.Parse(txtPersonBirthDate.Text);
-                worker.WorkerHourlyPay = Decimal.Parse(txtWorkerHourlyPay.Text);
+                worker.Save(this);
 
                 if (personList.addPerson(worker))
                 {
@@ -283,22 +269,19 @@ namespace EmpMan
                     {
                         if (personList.personList[i].GetType() == typeof(Manager))
                         {
-                            Manager newManager = new Manager();
-                            newManager.Save(this);
-                            MessageBox.Show(newManager.ToString());
+
+                            MessageBox.Show(personList.personList[i].ToString());
                         }
                         if (personList.personList[i].GetType() == typeof(Worker))
                         {
-                            Worker newWorker = new Worker();
-                            newWorker.Save(this);
-                            MessageBox.Show(newWorker.ToString());
+
+                            MessageBox.Show(personList.personList[i].ToString());
 
                         }
                         if (personList.personList[i].GetType() == typeof(Client))
                         {
-                            Client newClient = new Client();
-                            newClient.Save(this);
-                            MessageBox.Show(newClient.ToString());
+
+                            MessageBox.Show(personList.personList[i].ToString());
                             
                         }
 
