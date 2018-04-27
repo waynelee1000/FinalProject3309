@@ -58,6 +58,15 @@ namespace EmpMan
 
         private void frmEmpMan_Load(object sender, EventArgs e)
         {
+            grpClient.Enabled = false;
+            grpEmployee.Enabled = false;
+            grpManager.Enabled = false;
+            grpWorker.Enabled = false;
+            txtPersonName.Enabled = false;
+            txtPersonBirthDate.Enabled = false;
+            btnEditUpdate.Enabled = false;
+            btnDelete.Enabled = false;
+            txtPersonID.Focus();
         }
         /*
         private void frmEmpMan_Load(object sender, EventArgs e)
@@ -108,6 +117,7 @@ namespace EmpMan
             txtPersonID.Text = "";
             txtPersonName.Text = "";
             txtWorkerHourlyPay.Text = "";
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -120,21 +130,22 @@ namespace EmpMan
 
         private void btnCreateClient_Click(object sender, EventArgs e)
         {
+           
             if (!(validate.checkName(txtPersonName.Text)))
             {
-                MessageBox.Show("Incorrect Name.");
+                MessageBox.Show("Please Enter a Name");
             }
             else if (!(validate.checkID(txtPersonID.Text)))
             {
-                MessageBox.Show("Incorrect ID.");
+                MessageBox.Show("Please enter a digit ID");
             }
             else if (!(validate.checkBirthDate(txtPersonBirthDate.Text)))
             {
-                MessageBox.Show("Incorrect Date.");
+                MessageBox.Show("Incorrect date formate enter MM/DD/YY.");
             }
             else if (!(validate.checkName(txtClientType.Text)))
             {
-                MessageBox.Show("Incorrect Client Type.");
+                MessageBox.Show("Please enter a Client type!");
             }
             else
             {
@@ -257,7 +268,11 @@ namespace EmpMan
 
         private void btnFindDisplay_Click_1(object sender, EventArgs e)
         {
-            if (personList.personList.Count == 0)
+            if (!validate.checkID(txtPersonID.Text))
+            {
+                MessageBox.Show("Please enter a valid ID number");
+            }
+            else if (personList.personList.Count == 0)
             {
                 MessageBox.Show("Person does not exist");
             }
@@ -341,6 +356,83 @@ namespace EmpMan
                 }
             }
 
+        }
+
+        private void btnClient_Click(object sender, EventArgs e)
+        {
+            grpEntryControl.Enabled = false;
+            grpFormControl.Enabled = false;
+            btnCreateManager.Enabled = false;
+            btnCreateWorker.Enabled = false;
+            txtPersonName.Enabled = true;
+            txtPersonBirthDate.Enabled = true;
+            grpClient.Enabled = true;
+            btnCreateClient.Visible= true;
+            txtClientType.Enabled = true;
+            btnCreateClient.Enabled = true;
+            btnCreateManager.Visible = false;
+            btnCreateWorker.Visible = false;
+            btnCancel.Visible = true;
+        }
+        
+
+        private void btnManager_Click_1(object sender, EventArgs e)
+        {
+            grpEntryControl.Enabled = false;
+            txtPersonName.Enabled = true;
+            txtPersonBirthDate.Enabled = true;
+            grpClient.Enabled = true;
+            grpEmployee.Enabled = true;
+            grpManager.Enabled = true;
+            btnFindDisplay.Enabled = false;
+
+            btnCreateManager.Enabled = true;
+            btnCreateManager.Visible = true;
+            btnCreateClient.Visible = false;
+            btnCreateWorker.Visible = false;
+            btnCancel.Visible = true;
+        }
+
+        private void btnWorker_Click(object sender, EventArgs e)
+        {
+            grpEntryControl.Enabled = false;
+            txtPersonName.Enabled = true;
+            txtPersonBirthDate.Enabled = true;
+            grpClient.Enabled = true;
+            grpEmployee.Enabled = true;
+            grpManager.Enabled = true;
+            btnCreateManager.Visible = false;
+            btnCreateClient.Visible = false;
+            btnCreateWorker.Visible = true;
+            btnCreateWorker.Enabled = true;
+            btnCancel.Visible = true;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            grpEntryControl.Enabled = true;
+            txtPersonID.Focus();
+            btnCancel.Visible = false;
+            grpClient.Enabled = false;
+            grpEmployee.Enabled = false;
+            grpManager.Enabled = false;
+            grpWorker.Enabled = false;
+            txtPersonName.Enabled = false;
+            txtPersonBirthDate.Enabled = false;
+            btnEditUpdate.Enabled = false;
+            btnDelete.Enabled = false;
+            btnCreateManager.Visible = false;
+            btnCreateClient.Visible = false;
+            btnCreateWorker.Visible = false;
+            btnCancel.Visible = false;
+            txtClientType.Text = "";
+            txtEmployeeJobTitle.Text = "";
+            txtManagerBonus.Text = "";
+            txtManagerSalary.Text = "";
+            txtPersonBirthDate.Text = "";
+            txtPersonID.Text = "";
+            txtPersonName.Text = "";
+            txtWorkerHourlyPay.Text = "";
         }
     }
 }

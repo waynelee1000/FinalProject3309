@@ -33,6 +33,7 @@ namespace EmpMan.Classes
                     else
                     {
                         add = true;
+                        personList.Add(p);
                     }
                 }
             }
