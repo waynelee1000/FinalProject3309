@@ -141,7 +141,7 @@ namespace EmpMan
             }
             else if (!(validate.checkBirthDate(txtPersonBirthDate.Text)))
             {
-                MessageBox.Show("Incorrect date formate enter MM/DD/YY.");
+                MessageBox.Show("Incorrect date formate enter MM/DD/YYYY.");
             }
             else if (!(validate.checkName(txtClientType.Text)))
             {
@@ -149,12 +149,12 @@ namespace EmpMan
             }
             else
             {
-
+                client = new Client();
                 client.Save(this);
 
                 if (personList.addPerson(client))
                 {
-                    MessageBox.Show("Person :" + txtPersonName.Text + " has been added");
+                    MessageBox.Show("Person :" + txtPersonName.Text + " has been added"+ '\n'+"Press Cancel to continue");
                 }
                 else
                 {
@@ -189,15 +189,25 @@ namespace EmpMan
 
             else
             {
+                if (txtManagerBonus.Text.Contains('$'))
+                {
+                    txtManagerBonus.Text = txtManagerBonus.Text.Remove(0,1);
+                }
+                if (txtManagerSalary.Text.Contains('$'))
+                {
+                    txtManagerSalary.Text = txtManagerSalary.Text.Remove(0,1);
+                }
+                manager = new Manager();
                 manager.Save(this);
 
                 if (personList.addPerson(manager))
                 {
-                    MessageBox.Show("Person :" + txtPersonName.Text + " has been added");
+                    MessageBox.Show("Person :" + txtPersonName.Text + " has been added" + '\n' + "Press Cancel to continue");
                 }
                 else
                 {
                     MessageBox.Show("ID already exist");
+
                 }
             }
 
@@ -226,11 +236,17 @@ namespace EmpMan
 
             else
             {
+                if (txtWorkerHourlyPay.Text.Contains('$'))
+                {
+                    txtWorkerHourlyPay.Text = txtWorkerHourlyPay.Text.Remove(0,1);
+                }
+                worker = new Worker();
                 worker.Save(this);
 
                 if (personList.addPerson(worker))
                 {
-                    MessageBox.Show("Person :" + txtPersonName.Text + " has been added");
+                    MessageBox.Show("Person :" + txtPersonName.Text + " has been added" + '\n' + "Press Cancel to continue");
+                    
                 }
                 else
                 {
@@ -242,7 +258,7 @@ namespace EmpMan
 
         private void btnDelete_Click_1(object sender, EventArgs e)
         {
-
+            int matchCounter = 0;
             if (personList.personList.Count == 0)
             {
                 MessageBox.Show("Person is not deleted");
@@ -256,62 +272,143 @@ namespace EmpMan
                     {
                         personList.personList.RemoveAt(i);
 
-                        MessageBox.Show("Person is deleted");
+                        MessageBox.Show("Person is deleted" + '\n' + "Press Cancel to continue");
+
+                        matchCounter++;
+
+                        btnEditUpdate.Enabled = false;
+                        btnDelete.Enabled = false;
+                        btnFindDisplay.Enabled = true;
+                        btnCancel.Visible = false;
+                        grpClient.Enabled = false;
+                        grpEmployee.Enabled = false;
+                        grpManager.Enabled = false;
+                        grpWorker.Enabled = false;
+                        txtPersonName.Enabled = false;
+                        txtPersonBirthDate.Enabled = false;
+                        txtPersonID.Enabled = true;
+
+                        txtClientType.Text = "";
+                        txtEmployeeJobTitle.Text = "";
+                        txtManagerBonus.Text = "";
+                        txtManagerSalary.Text = "";
+                        txtPersonBirthDate.Text = "";
+                        txtPersonID.Text = "";
+                        txtPersonName.Text = "";
+                        txtWorkerHourlyPay.Text = "";
+                        break;
                     }
-                    else
-                    {
-                        MessageBox.Show("Person is not deleted");
-                    }
+
+                }
+                if (matchCounter == 0)
+                {
+                    MessageBox.Show("Person is not deleted");
+                    btnEditUpdate.Enabled = false;
+                    btnDelete.Enabled = false;
+                    btnFindDisplay.Enabled = true;
+                    btnCancel.Visible = false;
+                    grpPerson.Enabled = false;
+                    txtPersonID.Enabled = true;
                 }
             }
         }
 
         private void btnFindDisplay_Click_1(object sender, EventArgs e)
         {
-            if (!validate.checkID(txtPersonID.Text))
-            {
-                MessageBox.Show("Please enter a valid ID number");
-            }
-            else if (personList.personList.Count == 0)
-            {
-                MessageBox.Show("Person does not exist");
-            }
-            else
-            {
-                for (int i = 0; i < personList.personList.Count; i++)
+            int matchCounter = 0;
+
+                if (!validate.checkID(txtPersonID.Text))
                 {
-                    if (personList.personList[i].personID == txtPersonID.Text)
+                    MessageBox.Show("Please enter a valid ID number");
+                }
+                else if (personList.personList.Count == 0)
+
+                {
+                    MessageBox.Show("Person does not exist");
+                }
+                else
+                {
+                    for (int i = 0; i < personList.personList.Count; i++)
                     {
-                        if (personList.personList[i].GetType() == typeof(Manager))
+                        if (personList.personList[i].personID == txtPersonID.Text)
                         {
+                            if (personList.personList[i].GetType() == typeof(Manager))
+                            {
 
-                            MessageBox.Show(personList.personList[i].ToString());
+                                MessageBox.Show(personList.personList[i].ToString());
+                                personList.personList[i].Display(this);
+
+                                matchCounter++;
+
+                                txtPersonID.Enabled = false;
+                                txtPersonName.Enabled = true;
+                                txtPersonBirthDate.Enabled = true;
+                                grpEmployee.Enabled = true;
+                                grpManager.Enabled = true;
+                                btnEditUpdate.Enabled = true;
+                                btnDelete.Enabled = true;
+                                btnFindDisplay.Enabled = false;
+                                btnCancel.Visible = true;
+
+                                break;
+                                
+
+                            }
+                            if (personList.personList[i].GetType() == typeof(Worker))
+                            {
+
+                                MessageBox.Show(personList.personList[i].ToString());
+                                personList.personList[i].Display(this);
+
+                                matchCounter++;
+
+                                txtPersonID.Enabled = false;
+                                txtPersonName.Enabled = true;
+                                txtPersonBirthDate.Enabled = true;
+                                grpEmployee.Enabled = true;
+                                grpWorker.Enabled = true;
+                                btnEditUpdate.Enabled = true;
+                                btnDelete.Enabled = true;
+                                btnFindDisplay.Enabled = false;
+                                btnCancel.Visible = true;
+
+                                break;
+                            }
+                            if (personList.personList[i].GetType() == typeof(Client))
+                            {
+
+                                MessageBox.Show(personList.personList[i].ToString());
+                                personList.personList[i].Display(this);
+
+                                matchCounter++;
+
+                                txtPersonID.Enabled = false;
+                                txtPersonName.Enabled = true;
+                                txtPersonBirthDate.Enabled = true;
+                                grpClient.Enabled = true;
+                                btnEditUpdate.Enabled = true;
+                                btnDelete.Enabled = true;
+                                btnFindDisplay.Enabled = false;
+                                btnCancel.Visible = true;
+
+                                break;
+                            }
+
+
                         }
-                        if (personList.personList[i].GetType() == typeof(Worker))
-                        {
-
-                            MessageBox.Show(personList.personList[i].ToString());
-
-                        }
-                        if (personList.personList[i].GetType() == typeof(Client))
-                        {
-
-                            MessageBox.Show(personList.personList[i].ToString());
-                            
-                        }
-
                     }
-                    else
+
+                    if (matchCounter == 0)
                     {
                         MessageBox.Show("Person does not exist");
                     }
                 }
-            }
-
         }
 
         private void btnEditUpdate_Click(object sender, EventArgs e)
         {
+            int matchCounter = 0;
+
             if (personList.personList.Count == 0)
             {
                 MessageBox.Show("Person does not exist");
@@ -328,7 +425,32 @@ namespace EmpMan
                             newManager.Save(this);
                             personList.personList.RemoveAt(i);
                             personList.personList.Insert(i, newManager);
+
                             MessageBox.Show("Changes have been made");
+
+                            matchCounter++;
+
+                            btnEditUpdate.Enabled = false;
+                            btnDelete.Enabled = false;
+                            btnFindDisplay.Enabled = true;
+                            btnCancel.Visible = false;
+                            grpEmployee.Enabled = false;
+                            grpManager.Enabled = false;
+                            txtPersonName.Enabled = false;
+                            txtPersonBirthDate.Enabled = false;
+                            txtClientType.Enabled = false;
+                            txtPersonID.Enabled = true;
+
+                            txtClientType.Text = "";
+                            txtEmployeeJobTitle.Text = "";
+                            txtManagerBonus.Text = "";
+                            txtManagerSalary.Text = "";
+                            txtPersonBirthDate.Text = "";
+                            txtPersonID.Text = "";
+                            txtPersonName.Text = "";
+                            txtWorkerHourlyPay.Text = "";
+
+                            break;
                         }
                         if (personList.personList[i].GetType() == typeof(Worker))
                         {
@@ -336,7 +458,32 @@ namespace EmpMan
                             newWorker.Save(this);
                             personList.personList.RemoveAt(i);
                             personList.personList.Insert(i, newWorker);
+
                             MessageBox.Show("Changes have been made");
+
+                            matchCounter++;
+
+                            btnEditUpdate.Enabled = false;
+                            btnDelete.Enabled = false;
+                            btnFindDisplay.Enabled = true;
+                            btnCancel.Visible = false;
+                            txtClientType.Enabled = false;
+                            grpWorker.Enabled = false;
+                            grpEmployee.Enabled = false;
+                            txtPersonName.Enabled = false;
+                            txtPersonBirthDate.Enabled = false;
+                            txtPersonID.Enabled = true;
+
+                            txtClientType.Text = "";
+                            txtEmployeeJobTitle.Text = "";
+                            txtManagerBonus.Text = "";
+                            txtManagerSalary.Text = "";
+                            txtPersonBirthDate.Text = "";
+                            txtPersonID.Text = "";
+                            txtPersonName.Text = "";
+                            txtWorkerHourlyPay.Text = "";
+
+                            break;
 
                         }
                         if (personList.personList[i].GetType() == typeof(Client))
@@ -345,14 +492,41 @@ namespace EmpMan
                             newClient.Save(this);
                             personList.personList.RemoveAt(i);
                             personList.personList.Insert(i, newClient);
-                            MessageBox.Show("Changes have been made");
+
+                            MessageBox.Show("Changes have been made" );
+
+                            matchCounter++;
+
+                            btnEditUpdate.Enabled = false;
+                            btnDelete.Enabled = false;
+                            btnFindDisplay.Enabled = true;
+                            btnCancel.Visible = false;
+                            txtClientType.Enabled = false;
+                            txtPersonName.Enabled = false;
+                            txtPersonBirthDate.Enabled = false;
+                            txtPersonID.Enabled = true;
+
+                            txtClientType.Text = "";
+                            txtEmployeeJobTitle.Text = "";
+                            txtManagerBonus.Text = "";
+                            txtManagerSalary.Text = "";
+                            txtPersonBirthDate.Text = "";
+                            txtPersonID.Text = "";
+                            txtPersonName.Text = "";
+                            txtWorkerHourlyPay.Text = "";
+
+                            break;
                         }
 
+
+
                     }
-                    else
-                    {
-                        MessageBox.Show("Person does not exist");
-                    }
+
+                }
+
+                if (matchCounter == 0)
+                {
+                    MessageBox.Show("Person does not exist");
                 }
             }
 
@@ -361,7 +535,6 @@ namespace EmpMan
         private void btnClient_Click(object sender, EventArgs e)
         {
             grpEntryControl.Enabled = false;
-            grpFormControl.Enabled = false;
             btnCreateManager.Enabled = false;
             btnCreateWorker.Enabled = false;
             txtPersonName.Enabled = true;
@@ -370,8 +543,9 @@ namespace EmpMan
             btnCreateClient.Visible= true;
             txtClientType.Enabled = true;
             btnCreateClient.Enabled = true;
-            btnCreateManager.Visible = false;
-            btnCreateWorker.Visible = false;
+            btnCreateManager.Enabled = false;
+            btnCreateWorker.Enabled = false;
+            btnFindDisplay.Enabled = false;
             btnCancel.Visible = true;
         }
         
@@ -381,11 +555,10 @@ namespace EmpMan
             grpEntryControl.Enabled = false;
             txtPersonName.Enabled = true;
             txtPersonBirthDate.Enabled = true;
-            grpClient.Enabled = true;
+            grpClient.Enabled = false;
             grpEmployee.Enabled = true;
             grpManager.Enabled = true;
             btnFindDisplay.Enabled = false;
-
             btnCreateManager.Enabled = true;
             btnCreateManager.Visible = true;
             btnCreateClient.Visible = false;
@@ -398,9 +571,11 @@ namespace EmpMan
             grpEntryControl.Enabled = false;
             txtPersonName.Enabled = true;
             txtPersonBirthDate.Enabled = true;
-            grpClient.Enabled = true;
+            grpClient.Enabled = false;
             grpEmployee.Enabled = true;
-            grpManager.Enabled = true;
+            grpManager.Enabled = false;
+            grpWorker.Enabled = true;
+            btnFindDisplay.Enabled = false;
             btnCreateManager.Visible = false;
             btnCreateClient.Visible = false;
             btnCreateWorker.Visible = true;
@@ -419,12 +594,15 @@ namespace EmpMan
             grpWorker.Enabled = false;
             txtPersonName.Enabled = false;
             txtPersonBirthDate.Enabled = false;
+            txtPersonID.Enabled = true;
             btnEditUpdate.Enabled = false;
             btnDelete.Enabled = false;
             btnCreateManager.Visible = false;
             btnCreateClient.Visible = false;
             btnCreateWorker.Visible = false;
             btnCancel.Visible = false;
+
+            btnFindDisplay.Enabled = true;
             txtClientType.Text = "";
             txtEmployeeJobTitle.Text = "";
             txtManagerBonus.Text = "";

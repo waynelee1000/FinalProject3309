@@ -16,29 +16,37 @@ namespace EmpMan.Classes
 
         public bool addPerson(Person p)
         {
+            int matchCounter = 0;
             bool add = false;
             if (personList.Count == 0)
             {
+
                 personList.Add(p);
                 add = true;
             }
             else
             {
-                for(int i = 0; i < personList.Count(); i++)
+                for (int i = 0; i < personList.Count; i++)
                 {
-                    if(personList[i].personID == p.personID)
+                    if (personList[i].personID == p.personID)
                     {
+                        matchCounter++;
+
                         add = false;
+                        break;
+
                     }
-                    else
-                    {
-                        add = true;
-                        personList.Add(p);
-                    }
+
+
                 }
+                if (matchCounter == 0)
+                {
+                    add = true;
+                    personList.Add(p);
+                }
+
             }
             return add;
-            
         }
 
         public int Count()
