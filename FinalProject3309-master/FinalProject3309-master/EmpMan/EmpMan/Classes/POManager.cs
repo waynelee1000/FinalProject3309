@@ -22,7 +22,7 @@ namespace EmpMan
         // This class manages the persistant object by reading from and writing to a file
 
         // Write the Person List to file as a serialized binary object
-        public static bool writeToFile(PersonList plist, string fn)
+        public static bool writeToFile(ref PersonList plist, string fn)
         {
             Stream thisFileStream;
             BinaryFormatter serializer = new BinaryFormatter();
@@ -66,7 +66,7 @@ namespace EmpMan
 
 
         // Read the Person List from file as a serialized binary object
-        public static bool ReadFromFile(PersonList plist, string fn)
+        public static bool ReadFromFile(out PersonList plist, string fn)
         {
             Stream TestFileStream;
             BinaryFormatter deserializer = new BinaryFormatter();

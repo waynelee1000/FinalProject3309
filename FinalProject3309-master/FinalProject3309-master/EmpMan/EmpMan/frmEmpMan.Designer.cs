@@ -66,6 +66,7 @@
             this.grpPerson = new System.Windows.Forms.GroupBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.grpFormControl = new System.Windows.Forms.GroupBox();
+            this.btndisplayList = new System.Windows.Forms.Button();
             this.grpEntryControl.SuspendLayout();
             this.grpClient.SuspendLayout();
             this.grpEmployee.SuspendLayout();
@@ -77,7 +78,7 @@
             // 
             // btnCreateClient
             // 
-            this.btnCreateClient.Location = new System.Drawing.Point(32, 404);
+            this.btnCreateClient.Location = new System.Drawing.Point(176, 404);
             this.btnCreateClient.Margin = new System.Windows.Forms.Padding(4);
             this.btnCreateClient.Name = "btnCreateClient";
             this.btnCreateClient.Size = new System.Drawing.Size(145, 28);
@@ -89,10 +90,10 @@
             // 
             // btnCreateManager
             // 
-            this.btnCreateManager.Location = new System.Drawing.Point(218, 404);
+            this.btnCreateManager.Location = new System.Drawing.Point(176, 404);
             this.btnCreateManager.Margin = new System.Windows.Forms.Padding(4);
             this.btnCreateManager.Name = "btnCreateManager";
-            this.btnCreateManager.Size = new System.Drawing.Size(137, 28);
+            this.btnCreateManager.Size = new System.Drawing.Size(145, 28);
             this.btnCreateManager.TabIndex = 1;
             this.btnCreateManager.Text = "Create Manager";
             this.btnCreateManager.UseVisualStyleBackColor = true;
@@ -101,10 +102,10 @@
             // 
             // btnCreateWorker
             // 
-            this.btnCreateWorker.Location = new System.Drawing.Point(388, 404);
+            this.btnCreateWorker.Location = new System.Drawing.Point(176, 404);
             this.btnCreateWorker.Margin = new System.Windows.Forms.Padding(4);
             this.btnCreateWorker.Name = "btnCreateWorker";
-            this.btnCreateWorker.Size = new System.Drawing.Size(140, 28);
+            this.btnCreateWorker.Size = new System.Drawing.Size(145, 28);
             this.btnCreateWorker.TabIndex = 2;
             this.btnCreateWorker.Text = "Create Worker";
             this.btnCreateWorker.UseVisualStyleBackColor = true;
@@ -477,10 +478,10 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(557, 404);
+            this.btnCancel.Location = new System.Drawing.Point(368, 404);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(110, 28);
+            this.btnCancel.Size = new System.Drawing.Size(145, 28);
             this.btnCancel.TabIndex = 23;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -489,6 +490,7 @@
             // 
             // grpFormControl
             // 
+            this.grpFormControl.Controls.Add(this.btndisplayList);
             this.grpFormControl.Controls.Add(this.btnFindDisplay);
             this.grpFormControl.Controls.Add(this.btnEditUpdate);
             this.grpFormControl.Controls.Add(this.btnDelete);
@@ -500,6 +502,16 @@
             this.grpFormControl.TabIndex = 40;
             this.grpFormControl.TabStop = false;
             this.grpFormControl.Text = "Form Controls for Data Processing";
+            // 
+            // btndisplayList
+            // 
+            this.btndisplayList.Location = new System.Drawing.Point(346, 33);
+            this.btndisplayList.Name = "btndisplayList";
+            this.btndisplayList.Size = new System.Drawing.Size(102, 28);
+            this.btndisplayList.TabIndex = 41;
+            this.btndisplayList.Text = "Display List";
+            this.btndisplayList.UseVisualStyleBackColor = true;
+            this.btndisplayList.Click += new System.EventHandler(this.btndisplayList_Click);
             // 
             // frmEmpMan
             // 
@@ -519,6 +531,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmEmpMan";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmEmpMan_FormClosing);
             this.Load += new System.EventHandler(this.frmEmpMan_Load);
             this.grpEntryControl.ResumeLayout(false);
             this.grpClient.ResumeLayout(false);
@@ -577,6 +590,7 @@
         public System.Windows.Forms.Button btnManager;
         public System.Windows.Forms.Button btnClient;
         public System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btndisplayList;
     }
 }
 

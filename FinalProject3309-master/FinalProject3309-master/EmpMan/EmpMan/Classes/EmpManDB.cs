@@ -29,7 +29,7 @@ namespace EmpMan.Classes
     class EmpManDB
     {
         // Connection string for EmpManDB (type: Microsoft Access) in the Resources folder
-        string strConnection = "provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=../Debug/Resources/EmpManDB.accdb";
+        string strConnection = "provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=../Debug/EmpManDB.accdb";
 
         // *********** INSERTION METHODS **********
         // Inserts a new record for Person in the Person table with parameters name, birthDate and personID
@@ -61,11 +61,11 @@ namespace EmpMan.Classes
             }
 
         }
-        public bool InsertClient(int personID, string personName, string personBirthDate, string ClientType)
+        public bool InsertClient(int personID, string ClientType)
         {
             // SQL insert statement for Person
-            string strInsertClient = "INSERT INTO CLIENT (fldID, fldName, fldBirthDate, fldClientType) " +
-                "VALUES(" + personID + " , '" + personName + "', '" + personBirthDate +"', '" + ClientType + "' );";
+            string strInsertClient = "INSERT INTO CLIENT (fldID, fldClientType) " +
+                "VALUES(" + personID + " , '" + ClientType + "' );";
             OleDbConnection myConnection = new OleDbConnection(strConnection);
             OleDbCommand myCommand = new OleDbCommand(strInsertClient, myConnection);
             OleDbDataReader myDataReader;
@@ -89,11 +89,11 @@ namespace EmpMan.Classes
             }
 
         }
-        public bool InsertEmployee(int personID, string personName, string personBirthDate, string EmployeeJobTitle)
+        public bool InsertEmployee(int personID, string EmployeeJobTitle)
         {
             // SQL insert statement for Person
-            string strInsertEmployee = "INSERT INTO EMPLOYEE (fldID, fldName, fldBirthDate, fldJobTitle) " +
-                "VALUES(" + personID + " , '" + personName + "', '" + personBirthDate + "', '" + EmployeeJobTitle + "' );";
+            string strInsertEmployee = "INSERT INTO EMPLOYEE (fldID, fldJobTitle) " +
+                "VALUES(" + personID + " , '" + EmployeeJobTitle + "' );";
             OleDbConnection myConnection = new OleDbConnection(strConnection);
             OleDbCommand myCommand = new OleDbCommand(strInsertEmployee, myConnection);
             OleDbDataReader myDataReader;
@@ -117,11 +117,11 @@ namespace EmpMan.Classes
             }
 
         }
-        public bool InsertManager(int personID, string personName, string personBirthDate, string EmployeeJobTitle, decimal ManagerSalary, decimal ManagerBonus)
+        public bool InsertManager(int personID,  decimal ManagerSalary, decimal ManagerBonus)
         {
             // SQL insert statement for Person
-            string strInsertManager = "INSERT INTO MANAGER (fldID, fldName, fldBirthDate, fldJobTitle, fldSalary, fldBonus) " +
-                "VALUES(" + personID + " , '" + personName + "', '" + personBirthDate + " ', '" + EmployeeJobTitle + " ', '" + ManagerSalary + "' , '" + ManagerBonus + "' );";
+            string strInsertManager = "INSERT INTO MANAGER (fldID, fldSalary, fldBonus) " +
+                "VALUES(" + personID + " , '" + ManagerSalary + "' , '" + ManagerBonus + "' );";
             OleDbConnection myConnection = new OleDbConnection(strConnection);
             OleDbCommand myCommand = new OleDbCommand(strInsertManager, myConnection);
             OleDbDataReader myDataReader;
@@ -145,11 +145,11 @@ namespace EmpMan.Classes
             }
 
         }
-        public bool InsertWorker(int personID, string personName, string personBirthDate, string EmployeeJobTitle, decimal WorkerHourlyPay)
+        public bool InsertWorker(int personID, decimal WorkerHourlyPay)
         {
             // SQL insert statement for Person
-            string strInsertWorker = "INSERT INTO WORKER (fldID, fldName, fldBirthDate, fldJobTitle, fldHourlyPay) " +
-                "VALUES(" + personID + " , '" + personName + "', '" + personBirthDate + " ', '" + EmployeeJobTitle + " ', '" + WorkerHourlyPay  + "' );";
+            string strInsertWorker = "INSERT INTO WORKER (fldID, fldHourlyPay) " +
+                "VALUES(" + personID + " , '" + WorkerHourlyPay  + "' );";
             OleDbConnection myConnection = new OleDbConnection(strConnection);
             OleDbCommand myCommand = new OleDbCommand(strInsertWorker, myConnection);
             OleDbDataReader myDataReader;
@@ -287,78 +287,56 @@ namespace EmpMan.Classes
 
             return myDataReader;
         }  // end SelectPersonFromClient
-        public bool UpdateClient(int personID, string personName, string personBirthDate, string ClientType)
+        public bool UpdatePerson(int personID, string personName, string personBirthDate)
         {
-            // SQL insert statement for Person
-            string strUpdateClient =
-                "UPDATE PERSON SET fldName = " + "'" + personName + "'" + " , fldBirthDate = " + "'" + personBirthDate + "'" +
-                "WHERE fldID = " + personID + " ;"+
-                "UPDATE CLIENT SET fldName = " + "'" + personName + "'" + " , fldBirthDate = " + "'" + personBirthDate + "'" + ", fldClientType = " + "'" + ClientType + "'" +
-                "WHERE fldID = " + personID + " ;";
+            string strUpdatePerson = "UPDATE Client SET fldName = '" + personName + ", fldBirthDate = " + "'" + personBirthDate + "' WHERE fldId = " + personID;
+
+            OleDbConnection myConnection = new OleDbConnection(strConnection);
+            OleDbCommand myCommand = new OleDbCommand(strUpdatePerson, myConnection);
+
+            try
+            {
+                myConnection.Open();
+                myCommand.ExecuteNonQuery();
+            }
+            catch (OleDbException ex)
+            {
+                Console.Write("There was an Update Client error: " + ex.Message);
+                myConnection.Close();
+                return false; // returns false if Update was unsuccessful
+            }
+
+            return true; // returns true if Update was successful
+
+        }
+        public bool UpdateClient(int personID, string ClientType)
+        {
+            string strUpdateClient = "UPDATE Client SET fldClientType = '" + ClientType + "' WHERE fldId = " + personID;
+
             OleDbConnection myConnection = new OleDbConnection(strConnection);
             OleDbCommand myCommand = new OleDbCommand(strUpdateClient, myConnection);
-            OleDbDataReader myDataReader;
 
             try
             {
                 myConnection.Open();
-                myDataReader = myCommand.ExecuteReader();
-                myDataReader.Close();
-                return true; // returns true if Insert was successful
+                myCommand.ExecuteNonQuery();
             }
             catch (OleDbException ex)
             {
-                Console.Write("There was an update Client error: " + ex.Message);
-
-                return false; // returns false if Insert was unsuccessful
-            }
-            finally
-            {
+                Console.Write("There was an Update Client error: " + ex.Message);
                 myConnection.Close();
+                return false; // returns false if Update was unsuccessful
             }
 
+            return true; // returns true if Update was successful
+            
         }
-        public bool UpdateEmployee(int personID, string personName, string personBirthDate, string EmployeeJobTitle)
-        {
-            // SQL insert statement for Person
-            string strUpdateEmployee =
-                "UPDATE PERSON SET fldName = " + "'" + personName + "'" + " , fldBirthDate = " + "'" + personBirthDate + "'" +
-                "WHERE fldID = " + personID + " ;" +
-                "UPDATE EMPLOYEE SET fldName = " + "'" + personName + "'" + " , fldBirthDate = " + "'" + personBirthDate + "'" + ", fldJobTitle = " + "'" + EmployeeJobTitle + "'" +
-                "WHERE fldID = " + personID + " ;";
-            OleDbConnection myConnection = new OleDbConnection(strConnection);
-            OleDbCommand myCommand = new OleDbCommand(strUpdateEmployee, myConnection);
-            OleDbDataReader myDataReader;
-
-            try
-            {
-                myConnection.Open();
-                myDataReader = myCommand.ExecuteReader();
-                myDataReader.Close();
-                return true; // returns true if Insert was successful
-            }
-            catch (OleDbException ex)
-            {
-                Console.Write("There was an update Employee error: " + ex.Message);
-
-                return false; // returns false if Insert was unsuccessful
-            }
-            finally
-            {
-                myConnection.Close();
-            }
-
-        }
-        public bool UpdateManager(int personID, string personName, string personBirthDate, string EmployeeJobTitle, decimal ManagerSalary , decimal ManagerBonus)
+        public bool UpdateManager(int personID, string EmployeeJobTitle, decimal ManagerSalary , decimal ManagerBonus)
         {
             // SQL insert statement for Person
             string strUpdateManager =
-                "UPDATE PERSON SET fldName = " + "'" + personName + "'" + " , fldBirthDate = " + "'" + personBirthDate + "'" +
-                "WHERE fldID = " + personID + " ;" +
-                "UPDATE EMPLOYEE SET fldName = " + "'" + personName + "'" + " , fldBirthDate = " + "'" + personBirthDate + "'" + ", fldJobTitle = " + "'" + EmployeeJobTitle + "'" +
-                "WHERE fldID = " + personID + " ;"+
-                "UPDATE MANAGER SET fldName = " + "'" + personName + "'" + " , fldBirthDate = " + "'" + personBirthDate + "'" + ", fldJobTitle = " + "'" + EmployeeJobTitle + "'" + ", fldSalary = " + "'" + ManagerSalary + "'" + ", fldBonus = " + "'" + ManagerBonus + "'" +
-                "WHERE fldID = " + personID + " ;"; 
+                "UPDATE EMPLOYEE SET  fldJobTitle = '" + EmployeeJobTitle + "' WHERE fldId = " + personID+";"+
+                "UPDATE MANAGER SET fldSalary = " + "'" + ManagerSalary + "'" + ", fldBonus = " + "'" + ManagerBonus + "'" + "WHERE fldID = " + personID + " ;"; 
             OleDbConnection myConnection = new OleDbConnection(strConnection);
             OleDbCommand myCommand = new OleDbCommand(strUpdateManager, myConnection);
             OleDbDataReader myDataReader;
@@ -382,16 +360,11 @@ namespace EmpMan.Classes
             }
 
         }
-        public bool UpdateWorker(int personID, string personName, string personBirthDate, string EmployeeJobTitle, decimal WorkerHourlyPay)
+        public bool UpdateWorker(int personID, string EmployeeJobTitle, decimal WorkerHourlyPay)
         {
-            // SQL insert statement for Person
             string strUpdateManager =
-                "UPDATE PERSON SET fldName = " + "'" + personName + "'" + " , fldBirthDate = " + "'" + personBirthDate + "'" +
-                "WHERE fldID = " + personID + " ;" +
-                "UPDATE EMPLOYEE SET fldName = " + "'" + personName + "'" + " , fldBirthDate = " + "'" + personBirthDate + "'" + ", fldJobTitle = " + "'" + EmployeeJobTitle + "'" +
-                "WHERE fldID = " + personID + " ;" +
-                "UPDATE WORKER SET fldName = " + "'" + personName + "'" + " , fldBirthDate = " + "'" + personBirthDate + "'" + ", fldJobTitle = " + "'" + EmployeeJobTitle + "'" + ", fldHourlyPay = " + "'" + WorkerHourlyPay + "'"  +
-                "WHERE fldID = " + personID + " ;";
+                "UPDATE EMPLOYEE SET  fldJobTitle = '" + EmployeeJobTitle + "' WHERE fldId = " + personID + ";" + 
+                "UPDATE WORKER SET fldHourlyPay = " + "'" + WorkerHourlyPay + "'" +"WHERE fldID = " + personID + " ;";
             OleDbConnection myConnection = new OleDbConnection(strConnection);
             OleDbCommand myCommand = new OleDbCommand(strUpdateManager, myConnection);
             OleDbDataReader myDataReader;
@@ -415,124 +388,44 @@ namespace EmpMan.Classes
             }
 
         }
-        public bool DeleteClient(int personID)
+        public void Delete(int personID)
         {
-            // SQL insert statement for Person
-            string strDeleteClient =
-                "DELETE FROM PERSON WHERE fldID = " + personID + " ;" +
-                "DELETE FROM CLIENT WHERE fldID = " + personID + " ;";
-            OleDbConnection myConnection = new OleDbConnection(strConnection);
-            OleDbCommand myCommand = new OleDbCommand(strDeleteClient, myConnection);
-            OleDbDataReader myDataReader;
-
-            try
+            using (OleDbConnection connection = new OleDbConnection(strConnection))
             {
-                myConnection.Open();
-                myDataReader = myCommand.ExecuteReader();
-                myDataReader.Close();
-                return true; // returns true if Insert was successful
-            }
-            catch (OleDbException ex)
-            {
-                Console.Write("There was an Delete error: " + ex.Message);
+                try
+                {
+                    connection.Open();
 
-                return false; // returns false if Insert was unsuccessful
-            }
-            finally
-            {
-                myConnection.Close();
-            }
-
-        }
-        public bool DeleteEmployee(int personID)
-        {
-            // SQL insert statement for Person
-            string strDeleteEmployee =
-                "DELETE FROM PERSON WHERE fldID = " + personID + " ;" +
-                "DELETE FROM EMPLOYEE WHERE fldID = " + personID + " ;";
-            OleDbConnection myConnection = new OleDbConnection(strConnection);
-            OleDbCommand myCommand = new OleDbCommand(strDeleteEmployee, myConnection);
-            OleDbDataReader myDataReader;
-
-            try
-            {
-                myConnection.Open();
-                myDataReader = myCommand.ExecuteReader();
-                myDataReader.Close();
-                return true; // returns true if Insert was successful
-            }
-            catch (OleDbException ex)
-            {
-                Console.Write("There was an Delete employee error: " + ex.Message);
-
-                return false; // returns false if Insert was unsuccessful
-            }
-            finally
-            {
-                myConnection.Close();
-            }
-
-        }
-        public bool DeleteManager(int personID)
-        {
-            // SQL insert statement for Person
-            string strDeleteEmployee =
-                "DELETE FROM PERSON WHERE fldID = " + personID + " ;" +
-                "DELETE FROM EMPLOYEE WHERE fldID = " + personID + " ;" +
-                "DELETE FROM MANAGER WHERE fldID = " + personID + " ;";
-            OleDbConnection myConnection = new OleDbConnection(strConnection);
-            OleDbCommand myCommand = new OleDbCommand(strDeleteEmployee, myConnection);
-            OleDbDataReader myDataReader;
-
-            try
-            {
-                myConnection.Open();
-                myDataReader = myCommand.ExecuteReader();
-                myDataReader.Close();
-                return true; // returns true if Insert was successful
-            }
-            catch (OleDbException ex)
-            {
-                Console.Write("There was an Delete Manager error: " + ex.Message);
-
-                return false; // returns false if Insert was unsuccessful
-            }
-            finally
-            {
-                myConnection.Close();
-            }
-
-        }
-        public bool DeleteWorker(int personID)
-        {
-            // SQL insert statement for Person
-            string strDeleteWorker =
-                "DELETE FROM PERSON WHERE fldID = " + personID + " ;" +
-                "DELETE FROM EMPLOYEE WHERE fldID = " + personID + " ;" +
-                "DELETE FROM WORKER WHERE fldID = " + personID + " ;";
-            OleDbConnection myConnection = new OleDbConnection(strConnection);
-            OleDbCommand myCommand = new OleDbCommand(strDeleteWorker, myConnection);
-            OleDbDataReader myDataReader;
-
-            try
-            {
-                myConnection.Open();
-                myDataReader = myCommand.ExecuteReader();
-                myDataReader.Close();
-                return true; // returns true if Insert was successful
-            }
-            catch (OleDbException ex)
-            {
-                Console.Write("There was an Delete Worker error: " + ex.Message);
-
-                return false; // returns false if Insert was unsuccessful
-            }
-            finally
-            {
-                myConnection.Close();
-            }
-
-        }
+                    using (OleDbCommand command1 = new OleDbCommand("DELETE FROM PERSON WHERE fldID = " + personID, connection))
+                    {
+                        OleDbDataReader reader = command1.ExecuteReader();
+                    }
+                    using (OleDbCommand command2 = new OleDbCommand("DELETE FROM CLIENT WHERE fldID = " + personID, connection))
+                    {
+                        OleDbDataReader reader = command2.ExecuteReader();
+                    }
+                    using (OleDbCommand command3 = new OleDbCommand("DELETE FROM EMPLOYEE WHERE fldID = " + personID, connection))
+                    {
+                        OleDbDataReader reader = command3.ExecuteReader();
+                    }
+                    using (OleDbCommand command4 = new OleDbCommand("DELETE FROM MANAGER WHERE fldID = " + personID, connection))
+                    {
+                        OleDbDataReader reader = command4.ExecuteReader();
+                    }
+                    using (OleDbCommand command5 = new OleDbCommand("DELETE FROM WORKER WHERE fldID = " + personID, connection))
+                    {
+                        OleDbDataReader reader = command5.ExecuteReader();
+                    }
+                    connection.Close();
+                }
+                catch (OleDbException ex)
+                {
+                    Console.Write("Error: " + ex.Message);
+                    connection.Close();
+                }
+            }  // end using block
+            // FormController.clear(this);
+        }  // end Delete
 
     }
 
