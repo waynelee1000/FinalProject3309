@@ -40,12 +40,21 @@ namespace EmpMan.Classes
                     }
 
 
+<<<<<<< HEAD
                 }
                 if (matchCounter == 0)
                 {
                     add = true;
                     personList.Add(p);
                 }
+=======
+                }
+                if (matchCounter == 0)
+                {
+                    add = true;
+                    personList.Add(p);
+                }
+>>>>>>> 48178caa674b29e4b6e016234312d2ba7ae52cfb
 
             }
             return add;
