@@ -96,7 +96,6 @@ namespace EmpMan
                 client.Save(this);
                 if (personList.addPerson(client))
                 {
-<<<<<<< HEAD
 
                     dbFunctions.InsertPerson(Convert.ToInt32(txtPersonID.Text), txtPersonName.Text,
                     txtPersonBirthDate.Text);
@@ -106,9 +105,6 @@ namespace EmpMan
                                     "Transaction Complete", MessageBoxButtons.OK);
 
                     Reset();
-=======
-                    MessageBox.Show("Person :" + txtPersonName.Text + " has been added"+ '\n'+"Press Cancel to continue");
->>>>>>> 48178caa674b29e4b6e016234312d2ba7ae52cfb
                 }
                 else
                 {
@@ -145,26 +141,17 @@ namespace EmpMan
             {
                 if (txtManagerBonus.Text.Contains('$'))
                 {
-<<<<<<< HEAD
                     txtManagerBonus.Text = txtManagerBonus.Text.Remove(0, 1);
                 }
                 if (txtManagerSalary.Text.Contains('$'))
                 {
                     txtManagerSalary.Text = txtManagerSalary.Text.Remove(0, 1);
-=======
-                    txtManagerBonus.Text = txtManagerBonus.Text.Remove(0,1);
-                }
-                if (txtManagerSalary.Text.Contains('$'))
-                {
-                    txtManagerSalary.Text = txtManagerSalary.Text.Remove(0,1);
->>>>>>> 48178caa674b29e4b6e016234312d2ba7ae52cfb
                 }
                 manager = new Manager();
                 manager.Save(this);
 
                 if (personList.addPerson(manager))
                 {
-<<<<<<< HEAD
                     dbFunctions.InsertPerson(Convert.ToInt32(txtPersonID.Text), txtPersonName.Text,txtPersonBirthDate.Text);
                     dbFunctions.InsertEmployee(Convert.ToInt32(txtPersonID.Text), txtEmployeeJobTitle.Text);
                     dbFunctions.InsertManager(Convert.ToInt32(txtPersonID.Text), Convert.ToInt32(txtManagerSalary.Text) , Convert.ToInt32(txtManagerBonus.Text));
@@ -172,9 +159,6 @@ namespace EmpMan
                                     " Added to DB and Serializable File. Press OK to continue.",
                                     "Transaction Complete", MessageBoxButtons.OK);
                     Reset();
-=======
-                    MessageBox.Show("Person :" + txtPersonName.Text + " has been added" + '\n' + "Press Cancel to continue");
->>>>>>> 48178caa674b29e4b6e016234312d2ba7ae52cfb
                 }
                 else
                 {
@@ -210,18 +194,13 @@ namespace EmpMan
             {
                 if (txtWorkerHourlyPay.Text.Contains('$'))
                 {
-<<<<<<< HEAD
                     txtWorkerHourlyPay.Text = txtWorkerHourlyPay.Text.Remove(0, 1);
-=======
-                    txtWorkerHourlyPay.Text = txtWorkerHourlyPay.Text.Remove(0,1);
->>>>>>> 48178caa674b29e4b6e016234312d2ba7ae52cfb
                 }
                 worker = new Worker();
                 worker.Save(this);
 
                 if (personList.addPerson(worker))
                 {
-<<<<<<< HEAD
                     dbFunctions.InsertPerson(Convert.ToInt32(txtPersonID.Text), txtPersonName.Text, txtPersonBirthDate.Text);
                     dbFunctions.InsertEmployee(Convert.ToInt32(txtPersonID.Text), txtEmployeeJobTitle.Text);
                     dbFunctions.InsertWorker(Convert.ToInt32(txtPersonID.Text), Convert.ToInt32(txtWorkerHourlyPay.Text));
@@ -229,10 +208,6 @@ namespace EmpMan
                                     " Added to DB and Serializable File. Press OK to continue.",
                                     "Transaction Complete", MessageBoxButtons.OK);
                     Reset();
-=======
-                    MessageBox.Show("Person :" + txtPersonName.Text + " has been added" + '\n' + "Press Cancel to continue");
-                    
->>>>>>> 48178caa674b29e4b6e016234312d2ba7ae52cfb
                 }
                 else
                 {
@@ -257,7 +232,6 @@ namespace EmpMan
                     if (personList.personList[i].personID == txtPersonID.Text)
                     {
                         personList.personList.RemoveAt(i);
-<<<<<<< HEAD
                         dbFunctions.Delete(Convert.ToInt32(txtPersonID.Text));
                         MessageBox.Show("Person :" + txtPersonName.Text +
                                         " had been deletef from DB and Serializable File. Press OK to continue.",
@@ -265,13 +239,6 @@ namespace EmpMan
 
                         matchCounter++;
                         grpEntryControl.Enabled = true;
-=======
-
-                        MessageBox.Show("Person is deleted" + '\n' + "Press Cancel to continue");
-
-                        matchCounter++;
-
->>>>>>> 48178caa674b29e4b6e016234312d2ba7ae52cfb
                         btnEditUpdate.Enabled = false;
                         btnDelete.Enabled = false;
                         btnFindDisplay.Enabled = true;
@@ -312,7 +279,6 @@ namespace EmpMan
         private void btnFindDisplay_Click_1(object sender, EventArgs e)
         {
             int matchCounter = 0;
-<<<<<<< HEAD
             btnClearForm.Enabled = false;
 
             if (!validate.checkID(txtPersonID.Text))
@@ -327,28 +293,12 @@ namespace EmpMan
             else
             {
                 for (int i = 0; i < personList.personList.Count; i++)
-=======
-
-                if (!validate.checkID(txtPersonID.Text))
->>>>>>> 48178caa674b29e4b6e016234312d2ba7ae52cfb
                 {
-                    MessageBox.Show("Please enter a valid ID number");
-                }
-                else if (personList.personList.Count == 0)
-
-                {
-                    MessageBox.Show("Person does not exist");
-                }
-                else
-                {
-                    for (int i = 0; i < personList.personList.Count; i++)
+                    if (personList.personList[i].personID == txtPersonID.Text)
                     {
-                        if (personList.personList[i].personID == txtPersonID.Text)
+                        if (personList.personList[i].GetType() == typeof(Manager))
                         {
-                            if (personList.personList[i].GetType() == typeof(Manager))
-                            {
 
-<<<<<<< HEAD
                             MessageBox.Show(personList.personList[i].ToString());
                             personList.personList[i].Display(this);
 
@@ -421,84 +371,11 @@ namespace EmpMan
                     MessageBox.Show("Person does not exist");
                 }
             }
-=======
-                                MessageBox.Show(personList.personList[i].ToString());
-                                personList.personList[i].Display(this);
-
-                                matchCounter++;
-
-                                txtPersonID.Enabled = false;
-                                txtPersonName.Enabled = true;
-                                txtPersonBirthDate.Enabled = true;
-                                grpEmployee.Enabled = true;
-                                grpManager.Enabled = true;
-                                btnEditUpdate.Enabled = true;
-                                btnDelete.Enabled = true;
-                                btnFindDisplay.Enabled = false;
-                                btnCancel.Visible = true;
-
-                                break;
-                                
-
-                            }
-                            if (personList.personList[i].GetType() == typeof(Worker))
-                            {
-
-                                MessageBox.Show(personList.personList[i].ToString());
-                                personList.personList[i].Display(this);
-
-                                matchCounter++;
-
-                                txtPersonID.Enabled = false;
-                                txtPersonName.Enabled = true;
-                                txtPersonBirthDate.Enabled = true;
-                                grpEmployee.Enabled = true;
-                                grpWorker.Enabled = true;
-                                btnEditUpdate.Enabled = true;
-                                btnDelete.Enabled = true;
-                                btnFindDisplay.Enabled = false;
-                                btnCancel.Visible = true;
-
-                                break;
-                            }
-                            if (personList.personList[i].GetType() == typeof(Client))
-                            {
-
-                                MessageBox.Show(personList.personList[i].ToString());
-                                personList.personList[i].Display(this);
-
-                                matchCounter++;
-
-                                txtPersonID.Enabled = false;
-                                txtPersonName.Enabled = true;
-                                txtPersonBirthDate.Enabled = true;
-                                grpClient.Enabled = true;
-                                btnEditUpdate.Enabled = true;
-                                btnDelete.Enabled = true;
-                                btnFindDisplay.Enabled = false;
-                                btnCancel.Visible = true;
-
-                                break;
-                            }
-
-
-                        }
-                    }
-
-                    if (matchCounter == 0)
-                    {
-                        MessageBox.Show("Person does not exist");
-                    }
-                }
->>>>>>> 48178caa674b29e4b6e016234312d2ba7ae52cfb
         }
 
         private void btnEditUpdate_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
 
-=======
->>>>>>> 48178caa674b29e4b6e016234312d2ba7ae52cfb
             int matchCounter = 0;
 
             if (personList.personList.Count == 0)
@@ -523,10 +400,7 @@ namespace EmpMan
 
                             matchCounter++;
 
-<<<<<<< HEAD
                             grpEntryControl.Enabled = true;
-=======
->>>>>>> 48178caa674b29e4b6e016234312d2ba7ae52cfb
                             btnEditUpdate.Enabled = false;
                             btnDelete.Enabled = false;
                             btnFindDisplay.Enabled = true;
@@ -560,10 +434,7 @@ namespace EmpMan
 
                             matchCounter++;
 
-<<<<<<< HEAD
                             grpEntryControl.Enabled = true;
-=======
->>>>>>> 48178caa674b29e4b6e016234312d2ba7ae52cfb
                             btnEditUpdate.Enabled = false;
                             btnDelete.Enabled = false;
                             btnFindDisplay.Enabled = true;
@@ -594,18 +465,11 @@ namespace EmpMan
                             personList.personList.RemoveAt(i);
                             personList.personList.Insert(i, newClient);
 
-<<<<<<< HEAD
                             MessageBox.Show("Changes have been made");
 
                             matchCounter++;
 
                             grpEntryControl.Enabled = true;
-=======
-                            MessageBox.Show("Changes have been made" );
-
-                            matchCounter++;
-
->>>>>>> 48178caa674b29e4b6e016234312d2ba7ae52cfb
                             btnEditUpdate.Enabled = false;
                             btnDelete.Enabled = false;
                             btnFindDisplay.Enabled = true;
@@ -709,10 +573,6 @@ namespace EmpMan
             btnCreateClient.Visible = false;
             btnCreateWorker.Visible = false;
             btnCancel.Visible = false;
-<<<<<<< HEAD
-=======
-
->>>>>>> 48178caa674b29e4b6e016234312d2ba7ae52cfb
             btnFindDisplay.Enabled = true;
             txtClientType.Text = "";
             txtEmployeeJobTitle.Text = "";
