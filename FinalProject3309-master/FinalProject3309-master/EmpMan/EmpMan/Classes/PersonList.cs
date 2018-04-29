@@ -46,11 +46,6 @@ namespace EmpMan.Classes
                     add = true;
                     personList.Add(p);
                 }
-                if (matchCounter == 0)
-                {
-                    add = true;
-                    personList.Add(p);
-                }
             }
             return add;
         }
