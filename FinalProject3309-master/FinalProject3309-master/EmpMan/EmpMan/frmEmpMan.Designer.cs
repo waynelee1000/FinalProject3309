@@ -78,13 +78,10 @@
             // 
             // btnCreateClient
             // 
-<<<<<<< HEAD
             this.btnCreateClient.Location = new System.Drawing.Point(176, 404);
             this.btnCreateClient.Margin = new System.Windows.Forms.Padding(4);
-=======
             this.btnCreateClient.Location = new System.Drawing.Point(36, 505);
             this.btnCreateClient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
->>>>>>> 48178caa674b29e4b6e016234312d2ba7ae52cfb
             this.btnCreateClient.Name = "btnCreateClient";
             this.btnCreateClient.Size = new System.Drawing.Size(163, 35);
             this.btnCreateClient.TabIndex = 0;
@@ -95,17 +92,14 @@
             // 
             // btnCreateManager
             // 
-<<<<<<< HEAD
             this.btnCreateManager.Location = new System.Drawing.Point(176, 404);
             this.btnCreateManager.Margin = new System.Windows.Forms.Padding(4);
             this.btnCreateManager.Name = "btnCreateManager";
             this.btnCreateManager.Size = new System.Drawing.Size(145, 28);
-=======
             this.btnCreateManager.Location = new System.Drawing.Point(245, 505);
             this.btnCreateManager.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCreateManager.Name = "btnCreateManager";
             this.btnCreateManager.Size = new System.Drawing.Size(154, 35);
->>>>>>> 48178caa674b29e4b6e016234312d2ba7ae52cfb
             this.btnCreateManager.TabIndex = 1;
             this.btnCreateManager.Text = "Create Manager";
             this.btnCreateManager.UseVisualStyleBackColor = true;
@@ -114,17 +108,14 @@
             // 
             // btnCreateWorker
             // 
-<<<<<<< HEAD
             this.btnCreateWorker.Location = new System.Drawing.Point(176, 404);
             this.btnCreateWorker.Margin = new System.Windows.Forms.Padding(4);
             this.btnCreateWorker.Name = "btnCreateWorker";
             this.btnCreateWorker.Size = new System.Drawing.Size(145, 28);
-=======
             this.btnCreateWorker.Location = new System.Drawing.Point(436, 505);
             this.btnCreateWorker.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCreateWorker.Name = "btnCreateWorker";
             this.btnCreateWorker.Size = new System.Drawing.Size(158, 35);
->>>>>>> 48178caa674b29e4b6e016234312d2ba7ae52cfb
             this.btnCreateWorker.TabIndex = 2;
             this.btnCreateWorker.Text = "Create Worker";
             this.btnCreateWorker.UseVisualStyleBackColor = true;
@@ -497,17 +488,14 @@
             // 
             // btnCancel
             // 
-<<<<<<< HEAD
             this.btnCancel.Location = new System.Drawing.Point(368, 404);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(145, 28);
-=======
             this.btnCancel.Location = new System.Drawing.Point(627, 505);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(124, 35);
->>>>>>> 48178caa674b29e4b6e016234312d2ba7ae52cfb
             this.btnCancel.TabIndex = 23;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;

@@ -234,7 +234,7 @@ namespace EmpMan
                         personList.personList.RemoveAt(i);
                         dbFunctions.Delete(Convert.ToInt32(txtPersonID.Text));
                         MessageBox.Show("Person :" + txtPersonName.Text +
-                                        " had been deletef from DB and Serializable File. Press OK to continue.",
+                                        " had been deleted from DB and Serializable File. Press OK to continue.",
                                         "Transaction Complete", MessageBoxButtons.OK);
 
                         matchCounter++;
@@ -299,12 +299,9 @@ namespace EmpMan
                         if (personList.personList[i].GetType() == typeof(Manager))
                         {
 
-                            MessageBox.Show(personList.personList[i].ToString());
+                            
                             personList.personList[i].Display(this);
-
-                            //displayDbInformation();
                             matchCounter++;
-
                             grpEntryControl.Enabled = false;
                             txtPersonID.Enabled = false;
                             txtPersonName.Enabled = true;
@@ -323,9 +320,9 @@ namespace EmpMan
                         if (personList.personList[i].GetType() == typeof(Worker))
                         {
 
-                            MessageBox.Show(personList.personList[i].ToString());
+                           
                             personList.personList[i].Display(this);
-
+                            
                             matchCounter++;
 
                             grpEntryControl.Enabled = false;
@@ -343,10 +340,8 @@ namespace EmpMan
                         }
                         if (personList.personList[i].GetType() == typeof(Client))
                         {
-
-                            MessageBox.Show(personList.personList[i].ToString());
+                            
                             personList.personList[i].Display(this);
-
                             matchCounter++;
 
                             grpEntryControl.Enabled = false;
@@ -395,8 +390,11 @@ namespace EmpMan
                             newManager.Save(this);
                             personList.personList.RemoveAt(i);
                             personList.personList.Insert(i, newManager);
-
-                            MessageBox.Show("Changes have been made");
+                            dbFunctions.UpdatePerson(Convert.ToInt32(txtPersonID.Text),txtPersonName.Text,txtPersonBirthDate.Text);
+                            dbFunctions.UpdateManager(Convert.ToInt32(txtPersonID.Text),txtEmployeeJobTitle.Text,Convert.ToDecimal(txtManagerSalary.Text), Convert.ToDecimal(txtManagerBonus.Text));
+                            MessageBox.Show("Person :" + txtPersonName.Text +
+                                        " had been upadted from DB and Serializable File. Press OK to continue.",
+                                        "Transaction Complete", MessageBoxButtons.OK);
 
                             matchCounter++;
 
@@ -429,8 +427,11 @@ namespace EmpMan
                             newWorker.Save(this);
                             personList.personList.RemoveAt(i);
                             personList.personList.Insert(i, newWorker);
-
-                            MessageBox.Show("Changes have been made");
+                            dbFunctions.UpdatePerson(Convert.ToInt32(txtPersonID.Text), txtPersonName.Text, txtPersonBirthDate.Text);
+                            dbFunctions.UpdateWorker(Convert.ToInt32(txtPersonID.Text), txtEmployeeJobTitle.Text, Convert.ToDecimal(txtWorkerHourlyPay.Text));
+                            MessageBox.Show("Person :" + txtPersonName.Text +
+                                        " had been upadted from DB and Serializable File. Press OK to continue.",
+                                        "Transaction Complete", MessageBoxButtons.OK);
 
                             matchCounter++;
 
@@ -465,7 +466,12 @@ namespace EmpMan
                             personList.personList.RemoveAt(i);
                             personList.personList.Insert(i, newClient);
 
-                            MessageBox.Show("Changes have been made");
+                            dbFunctions.UpdatePerson(Convert.ToInt32(txtPersonID.Text), txtPersonName.Text, txtPersonBirthDate.Text);
+                            dbFunctions.UpdateClient(Convert.ToInt32(txtPersonID.Text), txtClientType.Text);
+                            MessageBox.Show("Person :" + txtPersonName.Text +
+                                        " had been upadted from DB and Serializable File. Press OK to continue.",
+                                        "Transaction Complete", MessageBoxButtons.OK);
+
 
                             matchCounter++;
 

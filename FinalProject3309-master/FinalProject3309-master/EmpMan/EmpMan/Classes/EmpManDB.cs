@@ -64,7 +64,7 @@ namespace EmpMan.Classes
         public bool InsertClient(int personID, string ClientType)
         {
             // SQL insert statement for Person
-            string strInsertClient = "INSERT INTO CLIENT (fldID, fldClientType) " +
+            string strInsertClient = "INSERT INTO CLIENT (fldID, fldType) " +
                 "VALUES(" + personID + " , '" + ClientType + "' );";
             OleDbConnection myConnection = new OleDbConnection(strConnection);
             OleDbCommand myCommand = new OleDbCommand(strInsertClient, myConnection);
@@ -92,7 +92,7 @@ namespace EmpMan.Classes
         public bool InsertEmployee(int personID, string EmployeeJobTitle)
         {
             // SQL insert statement for Person
-            string strInsertEmployee = "INSERT INTO EMPLOYEE (fldID, fldJobTitle) " +
+            string strInsertEmployee = "INSERT INTO EMPLOYEE (fldID, fldTitle) " +
                 "VALUES(" + personID + " , '" + EmployeeJobTitle + "' );";
             OleDbConnection myConnection = new OleDbConnection(strConnection);
             OleDbCommand myCommand = new OleDbCommand(strInsertEmployee, myConnection);
@@ -177,7 +177,7 @@ namespace EmpMan.Classes
         {
             // string strSelectPerson = "SELECT * FROM CLIENT WHERE CLIENT.fldID = " + personID; 
             string strSelectPerson = "SELECT PERSON.fldID, PERSON.fldName, PERSON.fldBirthDate, "
-               + "CLIENT.fldClientType FROM PERSON "
+               + "CLIENT.fldType FROM PERSON "
                + "INNER JOIN CLIENT ON CLIENT.fldID = PERSON.fldID "
                + "WHERE CLIENT.fldID = " + personID + ";";
 
@@ -205,7 +205,7 @@ namespace EmpMan.Classes
         {
             // string strSelectPerson = "SELECT * FROM CLIENT WHERE CLIENT.fldID = " + personID; 
             string strSelectEmployee = "SELECT PERSON.fldID, PERSON.fldName, PERSON.fldBirthDate, "
-               + "EMPLOYEE.fldJobTitle FROM PERSON "
+               + "EMPLOYEE.fldTitle FROM PERSON "
                + "INNER JOIN EMPLOYEE ON EMPLOYEE.fldID = PERSON.fldID "
                + "WHERE EMPLOYEE.fldID = " + personID + ";";
 
@@ -232,7 +232,7 @@ namespace EmpMan.Classes
         public OleDbDataReader SelectPersonFromManager(int personID, out bool OKFlag)
         {
             // string strSelectPerson = "SELECT * FROM CLIENT WHERE CLIENT.fldID = " + personID; 
-            string strSelectManager = "SELECT PERSON.fldID, PERSON.fldName, PERSON.fldBirthDate, EMPLOYEE.fldJobTitle, "
+            string strSelectManager = "SELECT PERSON.fldID, PERSON.fldName, PERSON.fldBirthDate, EMPLOYEE.fldTitle, "
                + "MANAGER.fldSalary, MANAGER.fldBonus  FROM PERSON "
                + "INNER JOIN EMPLOYEE ON EMPLOYEE.fldID = PERSON.fldID "
                + "INNER JOIN MANAGER ON MANAGER.fldID = EMPLOYEE.fldID "
@@ -261,7 +261,7 @@ namespace EmpMan.Classes
         public OleDbDataReader SelectPersonFromWorker(int personID, out bool OKFlag)
         {
             // string strSelectPerson = "SELECT * FROM CLIENT WHERE CLIENT.fldID = " + personID; 
-            string strSelectWorker = "SELECT PERSON.fldID, PERSON.fldName, PERSON.fldBirthDate, EMPLOYEE.fldJobTitle, "
+            string strSelectWorker = "SELECT PERSON.fldID, PERSON.fldName, PERSON.fldBirthDate, EMPLOYEE.fldTitle, "
                + "WORKER.fldHourlyPay FROM PERSON "
                + "INNER JOIN EMPLOYEE ON EMPLOYEE.fldID = PERSON.fldID "
                + "INNER JOIN WORKER ON WORKER.fldID = EMPLOYEE.fldID "
@@ -289,7 +289,7 @@ namespace EmpMan.Classes
         }  // end SelectPersonFromClient
         public bool UpdatePerson(int personID, string personName, string personBirthDate)
         {
-            string strUpdatePerson = "UPDATE Client SET fldName = '" + personName + ", fldBirthDate = " + "'" + personBirthDate + "' WHERE fldId = " + personID;
+            string strUpdatePerson = "UPDATE PERSON SET fldName = '" + personName + ", fldBirthDate = " + "'" + personBirthDate + "' WHERE fldId = " + personID;
 
             OleDbConnection myConnection = new OleDbConnection(strConnection);
             OleDbCommand myCommand = new OleDbCommand(strUpdatePerson, myConnection);
@@ -311,7 +311,7 @@ namespace EmpMan.Classes
         }
         public bool UpdateClient(int personID, string ClientType)
         {
-            string strUpdateClient = "UPDATE Client SET fldClientType = '" + ClientType + "' WHERE fldId = " + personID;
+            string strUpdateClient = "UPDATE CLIENT SET fldType = '" + ClientType + "' WHERE fldId = " + personID;
 
             OleDbConnection myConnection = new OleDbConnection(strConnection);
             OleDbCommand myCommand = new OleDbCommand(strUpdateClient, myConnection);
@@ -335,7 +335,7 @@ namespace EmpMan.Classes
         {
             // SQL insert statement for Person
             string strUpdateManager =
-                "UPDATE EMPLOYEE SET  fldJobTitle = '" + EmployeeJobTitle + "' WHERE fldId = " + personID+";"+
+                "UPDATE EMPLOYEE SET  fldTitle = '" + EmployeeJobTitle + "' WHERE fldId = " + personID+";"+
                 "UPDATE MANAGER SET fldSalary = " + "'" + ManagerSalary + "'" + ", fldBonus = " + "'" + ManagerBonus + "'" + "WHERE fldID = " + personID + " ;"; 
             OleDbConnection myConnection = new OleDbConnection(strConnection);
             OleDbCommand myCommand = new OleDbCommand(strUpdateManager, myConnection);
@@ -363,7 +363,7 @@ namespace EmpMan.Classes
         public bool UpdateWorker(int personID, string EmployeeJobTitle, decimal WorkerHourlyPay)
         {
             string strUpdateManager =
-                "UPDATE EMPLOYEE SET  fldJobTitle = '" + EmployeeJobTitle + "' WHERE fldId = " + personID + ";" + 
+                "UPDATE EMPLOYEE SET  fldTitle = '" + EmployeeJobTitle + "' WHERE fldId = " + personID + ";" + 
                 "UPDATE WORKER SET fldHourlyPay = " + "'" + WorkerHourlyPay + "'" +"WHERE fldID = " + personID + " ;";
             OleDbConnection myConnection = new OleDbConnection(strConnection);
             OleDbCommand myCommand = new OleDbCommand(strUpdateManager, myConnection);
