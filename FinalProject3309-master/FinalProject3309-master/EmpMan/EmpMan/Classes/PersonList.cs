@@ -38,19 +38,13 @@ namespace EmpMan.Classes
                         break;
 
                     }
-
-
                 }
                 if (matchCounter == 0)
                 {
                     add = true;
                     personList.Add(p);
                 }
-                if (matchCounter == 0)
-                {
-                    add = true;
-                    personList.Add(p);
-                }
+                
             }
             return add;
         }
@@ -60,6 +54,7 @@ namespace EmpMan.Classes
             int num = personList.Count();
             return num;
         }
+
         public void displayList() {
             string PersonListString = " ";
             for (int i = 0; i < personList.Count; i++) {

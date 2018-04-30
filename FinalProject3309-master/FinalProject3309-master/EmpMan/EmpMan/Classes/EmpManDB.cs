@@ -201,41 +201,14 @@ namespace EmpMan.Classes
 
             return myDataReader;
         }  // end SelectPersonFromClient
-        public OleDbDataReader SelectPersonFromEmployee(int personID, out bool OKFlag)
-        {
-            // string strSelectPerson = "SELECT * FROM CLIENT WHERE CLIENT.fldID = " + personID; 
-            string strSelectEmployee = "SELECT PERSON.fldID, PERSON.fldName, PERSON.fldBirthDate, "
-               + "EMPLOYEE.fldTitle FROM PERSON "
-               + "INNER JOIN EMPLOYEE ON EMPLOYEE.fldID = PERSON.fldID "
-               + "WHERE EMPLOYEE.fldID = " + personID + ";";
-
-            OleDbConnection myConnection = new OleDbConnection(strConnection);
-            OleDbCommand myCommand = new OleDbCommand(strSelectEmployee, myConnection);
-            OleDbDataReader myDataReader;
-
-            try
-            {
-                myConnection.Open();
-                myDataReader = myCommand.ExecuteReader();
-                OKFlag = true; // returns true if Select was successful
-            }
-            catch (OleDbException ex)
-            {
-                Console.Write("There was an error: " + ex.Message);
-                myDataReader = null;
-                myConnection.Close();
-                OKFlag = false; // returns false if Select was unsuccessful
-            }
-
-            return myDataReader;
-        }  // end SelectPersonFromClient
+       
         public OleDbDataReader SelectPersonFromManager(int personID, out bool OKFlag)
         {
             // string strSelectPerson = "SELECT * FROM CLIENT WHERE CLIENT.fldID = " + personID; 
-            string strSelectManager = "SELECT PERSON.fldID, PERSON.fldName, PERSON.fldBirthDate, EMPLOYEE.fldTitle, "
-               + "MANAGER.fldSalary, MANAGER.fldBonus  FROM PERSON "
+            string strSelectManager = "SELECT PERSON.fldID, PERSON.fldName, PERSON.fldBirthDate, EMPLOYEE.fldTitle, MANAGER.fldSalary, " +
+                " MANAGER.fldBonus FROM (PERSON " +
+                 "INNER JOIN MANAGER ON PERSON.fldID = EMPPLOYEE.fldID) "
                + "INNER JOIN EMPLOYEE ON EMPLOYEE.fldID = PERSON.fldID "
-               + "INNER JOIN MANAGER ON MANAGER.fldID = EMPLOYEE.fldID "
                + "WHERE PERSON.fldID = " + personID + ";";
 
             OleDbConnection myConnection = new OleDbConnection(strConnection);
@@ -261,11 +234,11 @@ namespace EmpMan.Classes
         public OleDbDataReader SelectPersonFromWorker(int personID, out bool OKFlag)
         {
             // string strSelectPerson = "SELECT * FROM CLIENT WHERE CLIENT.fldID = " + personID; 
-            string strSelectWorker = "SELECT PERSON.fldID, PERSON.fldName, PERSON.fldBirthDate, EMPLOYEE.fldTitle, "
-               + "WORKER.fldHourlyPay FROM PERSON "
-               + "INNER JOIN EMPLOYEE ON EMPLOYEE.fldID = PERSON.fldID "
-               + "INNER JOIN WORKER ON WORKER.fldID = EMPLOYEE.fldID "
-               + "WHERE PERSON.fldID = " + personID + ";";
+            string strSelectWorker = "SELECT PERSON.fldID, PERSON.fldName, PERSON.fldBirthDate, EMPLOYEE.fldTitle "
+            + "WORKER.fldHourlyPay FROM (PERSON "
+            + "INNER JOIN EMPLOYEE ON EMPLOYEE.fldID = PERSON.fldID) "
+            + "INNER JOIN WORKER ON WORKER.fldID = PERSON.fldID "
+            + "WHERE PERSON.fldID = " + personID + ";";
 
             OleDbConnection myConnection = new OleDbConnection(strConnection);
             OleDbCommand myCommand = new OleDbCommand(strSelectWorker, myConnection);
@@ -289,7 +262,7 @@ namespace EmpMan.Classes
         }  // end SelectPersonFromClient
         public bool UpdatePerson(int personID, string personName, string personBirthDate)
         {
-            string strUpdatePerson = "UPDATE PERSON SET fldName = '" + personName + ", fldBirthDate = " + "'" + personBirthDate + "' WHERE fldId = " + personID;
+            string strUpdatePerson = "UPDATE PERSON SET fldName = '" + personName + "', fldBirthDate = " + "'" + personBirthDate + "' WHERE fldID = " + personID+";";
 
             OleDbConnection myConnection = new OleDbConnection(strConnection);
             OleDbCommand myCommand = new OleDbCommand(strUpdatePerson, myConnection);
@@ -311,7 +284,7 @@ namespace EmpMan.Classes
         }
         public bool UpdateClient(int personID, string ClientType)
         {
-            string strUpdateClient = "UPDATE CLIENT SET fldType = '" + ClientType + "' WHERE fldId = " + personID;
+            string strUpdateClient = "UPDATE CLIENT SET fldType = '" + ClientType + "' WHERE fldID = " + personID+";";
 
             OleDbConnection myConnection = new OleDbConnection(strConnection);
             OleDbCommand myCommand = new OleDbCommand(strUpdateClient, myConnection);
@@ -335,7 +308,7 @@ namespace EmpMan.Classes
         {
             // SQL insert statement for Person
             string strUpdateManager =
-                "UPDATE EMPLOYEE SET  fldTitle = '" + EmployeeJobTitle + "' WHERE fldId = " + personID+";"+
+                "UPDATE EMPLOYEE SET  fldTitle = '" + EmployeeJobTitle + "' WHERE fldID = " + personID+";"+
                 "UPDATE MANAGER SET fldSalary = " + "'" + ManagerSalary + "'" + ", fldBonus = " + "'" + ManagerBonus + "'" + "WHERE fldID = " + personID + " ;"; 
             OleDbConnection myConnection = new OleDbConnection(strConnection);
             OleDbCommand myCommand = new OleDbCommand(strUpdateManager, myConnection);
@@ -363,7 +336,7 @@ namespace EmpMan.Classes
         public bool UpdateWorker(int personID, string EmployeeJobTitle, decimal WorkerHourlyPay)
         {
             string strUpdateManager =
-                "UPDATE EMPLOYEE SET  fldTitle = '" + EmployeeJobTitle + "' WHERE fldId = " + personID + ";" + 
+                "UPDATE EMPLOYEE SET  fldTitle = '" + EmployeeJobTitle + "' WHERE fldID = " + personID + ";" + 
                 "UPDATE WORKER SET fldHourlyPay = " + "'" + WorkerHourlyPay + "'" +"WHERE fldID = " + personID + " ;";
             OleDbConnection myConnection = new OleDbConnection(strConnection);
             OleDbCommand myCommand = new OleDbCommand(strUpdateManager, myConnection);

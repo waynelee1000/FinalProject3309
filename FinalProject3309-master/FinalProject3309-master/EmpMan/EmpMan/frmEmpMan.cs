@@ -222,7 +222,7 @@ namespace EmpMan
             int matchCounter = 0;
             if (personList.personList.Count == 0)
             {
-                MessageBox.Show("Person is not deleted");
+                MessageBox.Show("Person is not deleted ");
             }
 
             else
@@ -288,12 +288,15 @@ namespace EmpMan
             else if (personList.personList.Count == 0)
 
             {
-                MessageBox.Show("Person does not exist");
+                MessageBox.Show("This Person do not exist in the Serializable File ");
             }
             else
             {
+                Manager manager = new Manager();
+                displayDbInformation(manager);
                 for (int i = 0; i < personList.personList.Count; i++)
                 {
+                    
                     if (personList.personList[i].personID == txtPersonID.Text)
                     {
                         if (personList.personList[i].GetType() == typeof(Manager))
@@ -343,7 +346,7 @@ namespace EmpMan
                             
                             personList.personList[i].Display(this);
                             matchCounter++;
-
+                            txtClientType.Enabled = true;
                             grpEntryControl.Enabled = false;
                             txtPersonID.Enabled = false;
                             txtPersonName.Enabled = true;
@@ -363,7 +366,7 @@ namespace EmpMan
 
                 if (matchCounter == 0)
                 {
-                    MessageBox.Show("Person does not exist");
+                    MessageBox.Show("Person does not exist in Serializable File");
                 }
             }
         }
