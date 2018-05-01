@@ -39,33 +39,15 @@ namespace EmpMan.Classes
 
                     }
                 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 2aa9267f96ea878c1efe07f3b3804d7ca409fa57
                 if (matchCounter == 0)
                 {
                     add = true;
                     personList.Add(p);
                 }
-<<<<<<< HEAD
-=======
                 
->>>>>>> 2aa9267f96ea878c1efe07f3b3804d7ca409fa57
             }
             return add;
-        }
-        public bool PersonExist(Person p)
-        {
-                for (int i = 0; i < personList.Count; i++)
-                {
-                    if (personList[i].personID == p.personID)
-                    {
-                    return true;
-
-                    }
-                }
-                return false;
         }
 
         public int Count()

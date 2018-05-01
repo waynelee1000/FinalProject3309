@@ -1,0 +1,11 @@
+c:\users\tug12561\documents\visual studio 2015\Projects\EmpMan\EmpMan\bin\Debug\EmpMan.exe.config
+C:\Users\wayne\Desktop\FinalProject3309\EmpMan\EmpMan\obj\Debug\EmpMan.csprojResolveAssemblyReference.cache
+C:\Users\wayne\Desktop\FinalProject3309\EmpMan\EmpMan\obj\Debug\EmpMan.frmEmpMan.resources
+C:\Users\wayne\Desktop\FinalProject3309\EmpMan\EmpMan\obj\Debug\EmpMan.Properties.Resources.resources
+C:\Users\wayne\Desktop\FinalProject3309\EmpMan\EmpMan\obj\Debug\EmpMan.csproj.GenerateResource.Cache
+C:\Users\wayne\Desktop\FinalProject3309\EmpMan\EmpMan\obj\Debug\EmpMan.csproj.CoreCompileInputs.cache
+C:\Users\wayne\Desktop\FinalProject3309\EmpMan\EmpMan\bin\Debug\EmpMan.exe.config
+C:\Users\wayne\Desktop\FinalProject3309\EmpMan\EmpMan\bin\Debug\EmpMan.exe
+C:\Users\wayne\Desktop\FinalProject3309\EmpMan\EmpMan\bin\Debug\EmpMan.pdb
+C:\Users\wayne\Desktop\FinalProject3309\EmpMan\EmpMan\obj\Debug\EmpMan.exe
+C:\Users\wayne\Desktop\FinalProject3309\EmpMan\EmpMan\obj\Debug\EmpMan.pdb
