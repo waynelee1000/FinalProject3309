@@ -260,12 +260,10 @@ namespace EmpMan
         private void btnDelete_Click_1(object sender, EventArgs e)
         {
             int matchCounter = 0;
-            if (personList.personList.Count == 0)
-            {
-                MessageBox.Show("Person is not deleted");
-            }
 
-            else
+            bool hasOk = true;
+
+            if (personList.personList.Count != 0)
             {
                 for (int i = 0; i < personList.personList.Count(); i++)
                 {
@@ -278,6 +276,7 @@ namespace EmpMan
                                         "Transaction Complete", MessageBoxButtons.OK);
 
                         matchCounter++;
+
                         grpEntryControl.Enabled = true;
                         btnEditUpdate.Enabled = false;
                         btnDelete.Enabled = false;
@@ -301,6 +300,97 @@ namespace EmpMan
                         txtWorkerHourlyPay.Text = "";
                         break;
                     }
+                    else if (txtPersonID.Text != "")
+                    {
+                        if (dbFunctions.SelectPersonFromClient(int.Parse(txtPersonID.Text), out hasOk).HasRows == true)
+                        {
+                            dbFunctions.Delete(Convert.ToInt32(txtPersonID.Text));
+
+                            MessageBox.Show("Person :" + txtPersonName.Text +
+                                            " had been deleted from DB and Serializable File. Press OK to continue.",
+                                            "Transaction Complete", MessageBoxButtons.OK);
+
+                            grpEntryControl.Enabled = true;
+                            btnEditUpdate.Enabled = false;
+                            btnDelete.Enabled = false;
+                            btnFindDisplay.Enabled = true;
+                            btnCancel.Visible = false;
+                            grpClient.Enabled = false;
+                            grpEmployee.Enabled = false;
+                            grpManager.Enabled = false;
+                            grpWorker.Enabled = false;
+                            txtPersonName.Enabled = false;
+                            txtPersonBirthDate.Enabled = false;
+                            txtPersonID.Enabled = true;
+
+                            txtClientType.Text = "";
+                            txtEmployeeJobTitle.Text = "";
+                            txtManagerBonus.Text = "";
+                            txtManagerSalary.Text = "";
+                            txtPersonBirthDate.Text = "";
+                            txtPersonID.Text = "";
+                            txtPersonName.Text = "";
+                            txtWorkerHourlyPay.Text = "";
+
+                        }
+                        else if (dbFunctions.SelectPersonFromManager(int.Parse(txtPersonID.Text), out hasOk).HasRows == true)
+                        {
+                            dbFunctions.Delete(Convert.ToInt32(txtPersonID.Text));
+                            MessageBox.Show("Person :" + txtPersonName.Text +
+                                            " had been deleted from DB and Serializable File. Press OK to continue.",
+                                            "Transaction Complete", MessageBoxButtons.OK);
+                            grpEntryControl.Enabled = true;
+                            btnEditUpdate.Enabled = false;
+                            btnDelete.Enabled = false;
+                            btnFindDisplay.Enabled = true;
+                            btnCancel.Visible = false;
+                            grpClient.Enabled = false;
+                            grpEmployee.Enabled = false;
+                            grpManager.Enabled = false;
+                            grpWorker.Enabled = false;
+                            txtPersonName.Enabled = false;
+                            txtPersonBirthDate.Enabled = false;
+                            txtPersonID.Enabled = true;
+
+                            txtClientType.Text = "";
+                            txtEmployeeJobTitle.Text = "";
+                            txtManagerBonus.Text = "";
+                            txtManagerSalary.Text = "";
+                            txtPersonBirthDate.Text = "";
+                            txtPersonID.Text = "";
+                            txtPersonName.Text = "";
+                            txtWorkerHourlyPay.Text = "";
+
+                        }
+                        else if (dbFunctions.SelectPersonFromWorker(int.Parse(txtPersonID.Text), out hasOk).HasRows == true)
+                        {
+                            dbFunctions.Delete(Convert.ToInt32(txtPersonID.Text));
+                            MessageBox.Show("Person :" + txtPersonName.Text +
+                                            " had been deleted from DB and Serializable File. Press OK to continue.",
+                                            "Transaction Complete", MessageBoxButtons.OK);
+                            grpEntryControl.Enabled = true;
+                            btnEditUpdate.Enabled = false;
+                            btnDelete.Enabled = false;
+                            btnFindDisplay.Enabled = true;
+                            btnCancel.Visible = false;
+                            grpClient.Enabled = false;
+                            grpEmployee.Enabled = false;
+                            grpManager.Enabled = false;
+                            grpWorker.Enabled = false;
+                            txtPersonName.Enabled = false;
+                            txtPersonBirthDate.Enabled = false;
+                            txtPersonID.Enabled = true;
+
+                            txtClientType.Text = "";
+                            txtEmployeeJobTitle.Text = "";
+                            txtManagerBonus.Text = "";
+                            txtManagerSalary.Text = "";
+                            txtPersonBirthDate.Text = "";
+                            txtPersonID.Text = "";
+                            txtPersonName.Text = "";
+                            txtWorkerHourlyPay.Text = "";
+                        }
+                    }
 
                 }
                 if (matchCounter == 0)
@@ -316,6 +406,99 @@ namespace EmpMan
                     txtPersonID.Enabled = true;
                 }
             }
+
+
+            else
+            {
+                if (dbFunctions.SelectPersonFromClient(int.Parse(txtPersonID.Text), out hasOk).HasRows == true)
+                {
+                    dbFunctions.Delete(Convert.ToInt32(txtPersonID.Text));
+                    MessageBox.Show("Person :" + txtPersonName.Text +
+                                    " had been deleted from DB and Serializable File. Press OK to continue.",
+                                    "Transaction Complete", MessageBoxButtons.OK);
+                    grpEntryControl.Enabled = true;
+                    btnEditUpdate.Enabled = false;
+                    btnDelete.Enabled = false;
+                    btnFindDisplay.Enabled = true;
+                    btnCancel.Visible = false;
+                    grpClient.Enabled = false;
+                    grpEmployee.Enabled = false;
+                    grpManager.Enabled = false;
+                    grpWorker.Enabled = false;
+                    txtPersonName.Enabled = false;
+                    txtPersonBirthDate.Enabled = false;
+                    txtPersonID.Enabled = true;
+
+                    txtClientType.Text = "";
+                    txtEmployeeJobTitle.Text = "";
+                    txtManagerBonus.Text = "";
+                    txtManagerSalary.Text = "";
+                    txtPersonBirthDate.Text = "";
+                    txtPersonID.Text = "";
+                    txtPersonName.Text = "";
+                    txtWorkerHourlyPay.Text = "";
+
+                }
+                else if (dbFunctions.SelectPersonFromManager(int.Parse(txtPersonID.Text), out hasOk).HasRows == true)
+                {
+                    dbFunctions.Delete(Convert.ToInt32(txtPersonID.Text));
+                    MessageBox.Show("Person :" + txtPersonName.Text +
+                                    " had been deleted from DB and Serializable File. Press OK to continue.",
+                                    "Transaction Complete", MessageBoxButtons.OK);
+                    grpEntryControl.Enabled = true;
+                    btnEditUpdate.Enabled = false;
+                    btnDelete.Enabled = false;
+                    btnFindDisplay.Enabled = true;
+                    btnCancel.Visible = false;
+                    grpClient.Enabled = false;
+                    grpEmployee.Enabled = false;
+                    grpManager.Enabled = false;
+                    grpWorker.Enabled = false;
+                    txtPersonName.Enabled = false;
+                    txtPersonBirthDate.Enabled = false;
+                    txtPersonID.Enabled = true;
+
+                    txtClientType.Text = "";
+                    txtEmployeeJobTitle.Text = "";
+                    txtManagerBonus.Text = "";
+                    txtManagerSalary.Text = "";
+                    txtPersonBirthDate.Text = "";
+                    txtPersonID.Text = "";
+                    txtPersonName.Text = "";
+                    txtWorkerHourlyPay.Text = "";
+
+                }
+                else if (dbFunctions.SelectPersonFromWorker(int.Parse(txtPersonID.Text), out hasOk).HasRows == true)
+                {
+                    dbFunctions.Delete(Convert.ToInt32(txtPersonID.Text));
+                    MessageBox.Show("Person :" + txtPersonName.Text +
+                                    " had been deleted from DB and Serializable File. Press OK to continue.",
+                                    "Transaction Complete", MessageBoxButtons.OK);
+                    grpEntryControl.Enabled = true;
+                    btnEditUpdate.Enabled = false;
+                    btnDelete.Enabled = false;
+                    btnFindDisplay.Enabled = true;
+                    btnCancel.Visible = false;
+                    grpClient.Enabled = false;
+                    grpEmployee.Enabled = false;
+                    grpManager.Enabled = false;
+                    grpWorker.Enabled = false;
+                    txtPersonName.Enabled = false;
+                    txtPersonBirthDate.Enabled = false;
+                    txtPersonID.Enabled = true;
+
+                    txtClientType.Text = "";
+                    txtEmployeeJobTitle.Text = "";
+                    txtManagerBonus.Text = "";
+                    txtManagerSalary.Text = "";
+                    txtPersonBirthDate.Text = "";
+                    txtPersonID.Text = "";
+                    txtPersonName.Text = "";
+                    txtWorkerHourlyPay.Text = "";
+                }
+
+            }
+            
         }
 
         private void btnFindDisplay_Click_1(object sender, EventArgs e)
@@ -326,11 +509,6 @@ namespace EmpMan
             if (!validate.checkID(txtPersonID.Text))
             {
                 MessageBox.Show("Please enter a valid ID number");
-            }
-            else if (personList.personList.Count == 0)
-
-            {
-                MessageBox.Show("Person does not exist");
             }
             else
             {
@@ -361,6 +539,7 @@ namespace EmpMan
                     txtClientType.Enabled = true;
                     grpEmployee.Enabled = false;
                     grpManager.Enabled = false;
+                    grpClient.Enabled = true;
                     btnEditUpdate.Enabled = true;
                     btnDelete.Enabled = true;
                     btnFindDisplay.Enabled = false;
@@ -420,6 +599,80 @@ namespace EmpMan
                             btnFindDisplay.Enabled = false;
                             btnCancel.Visible = true;
                         }
+
+
+                        else if (displayDbInformation(newworker) == false)
+                        {
+                            if (personList.personList.Count > 0)
+                            {
+                                for (int i = 0; i < personList.personList.Count; i++)
+                                {
+                                    if (personList.personList[i].personID == txtPersonID.Text)
+                                    {
+                                        if (personList.personList[i].GetType() == typeof(Client))
+                                        {
+                                            personList.personList[i].Display(this);
+
+                                            matchCounter++;
+
+                                            grpEntryControl.Enabled = false;
+                                            txtPersonID.Enabled = false;
+                                            txtPersonName.Enabled = true;
+                                            txtPersonBirthDate.Enabled = true;
+                                            txtClientType.Enabled = true;
+                                            grpEmployee.Enabled = false;
+                                            grpManager.Enabled = false;
+                                            grpClient.Enabled = true;
+                                            btnEditUpdate.Enabled = true;
+                                            btnDelete.Enabled = true;
+                                            btnFindDisplay.Enabled = false;
+                                            btnCancel.Visible = true;
+                                        }
+                                        else if (personList.personList[i].GetType() == typeof(Manager))
+                                        {
+                                            personList.personList[i].Display(this);
+
+                                            matchCounter++;
+
+                                            grpEntryControl.Enabled = false;
+                                            txtPersonID.Enabled = false;
+                                            txtPersonName.Enabled = true;
+                                            txtPersonBirthDate.Enabled = true;
+                                            grpEmployee.Enabled = true;
+                                            grpManager.Enabled = true;
+                                            grpWorker.Enabled = false;
+                                            btnEditUpdate.Enabled = true;
+                                            btnDelete.Enabled = true;
+                                            btnFindDisplay.Enabled = false;
+                                            btnCancel.Visible = true;
+                                        }
+                                        else if (personList.personList[i].GetType() == typeof(Worker))
+                                        {
+                                            personList.personList[i].Display(this);
+
+                                            matchCounter++;
+
+                                            grpEntryControl.Enabled = false;
+                                            txtPersonID.Enabled = false;
+                                            txtPersonName.Enabled = true;
+                                            txtPersonBirthDate.Enabled = true;
+                                            grpEmployee.Enabled = true;
+                                            grpManager.Enabled = false;
+                                            grpWorker.Enabled = true;
+                                            btnEditUpdate.Enabled = true;
+                                            btnDelete.Enabled = true;
+                                            btnFindDisplay.Enabled = false;
+                                            btnCancel.Visible = true;
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Person does not exist");
+                            }
+
+                        }
                     }
                 }
 
@@ -434,143 +687,235 @@ namespace EmpMan
         {
 
             int matchCounter = 0;
+            Client newclient = new Client();
+            newclient.personID = txtPersonID.Text;
+            Manager newmanager = new Manager();
+            newmanager.personID = txtPersonID.Text;
+            Worker newworker = new Worker();
+            newworker.personID = txtPersonID.Text;
 
-            if (personList.personList.Count == 0)
+            if (displayDbInformation(newclient) == true)
             {
-                MessageBox.Show("Person does not exist");
+                dbFunctions.UpdatePerson(Convert.ToInt32(txtPersonID.Text), txtPersonName.Text, txtPersonBirthDate.Text);
+                dbFunctions.UpdateClient(Convert.ToInt32(txtPersonID.Text), txtClientType.Text);
+                MessageBox.Show("Person :" + txtPersonName.Text +
+                            " had been upadted from DB and Serializable File. Press OK to continue.",
+                            "Transaction Complete", MessageBoxButtons.OK);
+
+                grpEntryControl.Enabled = true;
+                btnEditUpdate.Enabled = false;
+                btnDelete.Enabled = false;
+                btnFindDisplay.Enabled = true;
+                btnCancel.Visible = false;
+                txtClientType.Enabled = false;
+                txtPersonName.Enabled = false;
+                txtPersonBirthDate.Enabled = false;
+                txtPersonID.Enabled = true;
+
+                txtClientType.Text = "";
+                txtEmployeeJobTitle.Text = "";
+                txtManagerBonus.Text = "";
+                txtManagerSalary.Text = "";
+                txtPersonBirthDate.Text = "";
+                txtPersonID.Text = "";
+                txtPersonName.Text = "";
+                txtWorkerHourlyPay.Text = "";
+
             }
+            else if (displayDbInformation(newmanager) == true)
+            {
+                dbFunctions.UpdatePerson(Convert.ToInt32(txtPersonID.Text), txtPersonName.Text, txtPersonBirthDate.Text);
+                dbFunctions.UpdateManager(Convert.ToInt32(txtPersonID.Text), txtEmployeeJobTitle.Text, Convert.ToDecimal(txtManagerSalary.Text), Convert.ToDecimal(txtManagerBonus.Text));
+                MessageBox.Show("Person :" + txtPersonName.Text +
+                            " had been upadted from DB and Serializable File. Press OK to continue.",
+                            "Transaction Complete", MessageBoxButtons.OK);
+
+                grpEntryControl.Enabled = true;
+                btnEditUpdate.Enabled = false;
+                btnDelete.Enabled = false;
+                btnFindDisplay.Enabled = true;
+                btnCancel.Visible = false;
+                grpEmployee.Enabled = false;
+                grpManager.Enabled = false;
+                txtPersonName.Enabled = false;
+                txtPersonBirthDate.Enabled = false;
+                txtClientType.Enabled = false;
+                txtPersonID.Enabled = true;
+
+                txtClientType.Text = "";
+                txtEmployeeJobTitle.Text = "";
+                txtManagerBonus.Text = "";
+                txtManagerSalary.Text = "";
+                txtPersonBirthDate.Text = "";
+                txtPersonID.Text = "";
+                txtPersonName.Text = "";
+                txtWorkerHourlyPay.Text = "";
+
+            }
+            else if (displayDbInformation(newworker) == true)
+            {
+                dbFunctions.UpdatePerson(Convert.ToInt32(txtPersonID.Text), txtPersonName.Text, txtPersonBirthDate.Text);
+                dbFunctions.UpdateWorker(Convert.ToInt32(txtPersonID.Text), txtEmployeeJobTitle.Text, Convert.ToDecimal(txtWorkerHourlyPay.Text));
+                MessageBox.Show("Person :" + txtPersonName.Text +
+                            " had been upadted from DB and Serializable File. Press OK to continue.",
+                            "Transaction Complete", MessageBoxButtons.OK);
+
+                grpEntryControl.Enabled = true;
+                btnEditUpdate.Enabled = false;
+                btnDelete.Enabled = false;
+                btnFindDisplay.Enabled = true;
+                btnCancel.Visible = false;
+                txtClientType.Enabled = false;
+                grpWorker.Enabled = false;
+                grpEmployee.Enabled = false;
+                txtPersonName.Enabled = false;
+                txtPersonBirthDate.Enabled = false;
+                txtPersonID.Enabled = true;
+
+                txtClientType.Text = "";
+                txtEmployeeJobTitle.Text = "";
+                txtManagerBonus.Text = "";
+                txtManagerSalary.Text = "";
+                txtPersonBirthDate.Text = "";
+                txtPersonID.Text = "";
+                txtPersonName.Text = "";
+                txtWorkerHourlyPay.Text = "";
+            }
+
             else
             {
-                for (int i = 0; i < personList.personList.Count; i++)
-                {
-                    if (personList.personList[i].personID == txtPersonID.Text)
-                    {
-                        if (personList.personList[i].GetType() == typeof(Manager))
-                        {
-
-                            Manager newManager = new Manager();
-                            newManager.Save(this);
-                            personList.personList.RemoveAt(i);
-                            personList.personList.Insert(i, newManager);
-                            dbFunctions.UpdatePerson(Convert.ToInt32(txtPersonID.Text), txtPersonName.Text, txtPersonBirthDate.Text);
-                            dbFunctions.UpdateManager(Convert.ToInt32(txtPersonID.Text), txtEmployeeJobTitle.Text, Convert.ToDecimal(txtManagerSalary.Text), Convert.ToDecimal(txtManagerBonus.Text));
-                            MessageBox.Show("Person :" + txtPersonName.Text +
-                                        " had been upadted from DB and Serializable File. Press OK to continue.",
-                                        "Transaction Complete", MessageBoxButtons.OK);
-
-                            matchCounter++;
-
-                            grpEntryControl.Enabled = true;
-                            btnEditUpdate.Enabled = false;
-                            btnDelete.Enabled = false;
-                            btnFindDisplay.Enabled = true;
-                            btnCancel.Visible = false;
-                            grpEmployee.Enabled = false;
-                            grpManager.Enabled = false;
-                            txtPersonName.Enabled = false;
-                            txtPersonBirthDate.Enabled = false;
-                            txtClientType.Enabled = false;
-                            txtPersonID.Enabled = true;
-
-                            txtClientType.Text = "";
-                            txtEmployeeJobTitle.Text = "";
-                            txtManagerBonus.Text = "";
-                            txtManagerSalary.Text = "";
-                            txtPersonBirthDate.Text = "";
-                            txtPersonID.Text = "";
-                            txtPersonName.Text = "";
-                            txtWorkerHourlyPay.Text = "";
-
-                            break;
-                        }
-                        if (personList.personList[i].GetType() == typeof(Worker))
-                        {
-                            Worker newWorker = new Worker();
-                            newWorker.Save(this);
-                            personList.personList.RemoveAt(i);
-                            personList.personList.Insert(i, newWorker);
-                            dbFunctions.UpdatePerson(Convert.ToInt32(txtPersonID.Text), txtPersonName.Text, txtPersonBirthDate.Text);
-                            dbFunctions.UpdateWorker(Convert.ToInt32(txtPersonID.Text), txtEmployeeJobTitle.Text, Convert.ToDecimal(txtWorkerHourlyPay.Text));
-                            MessageBox.Show("Person :" + txtPersonName.Text +
-                                        " had been upadted from DB and Serializable File. Press OK to continue.",
-                                        "Transaction Complete", MessageBoxButtons.OK);
-
-                            matchCounter++;
-
-                            grpEntryControl.Enabled = true;
-                            btnEditUpdate.Enabled = false;
-                            btnDelete.Enabled = false;
-                            btnFindDisplay.Enabled = true;
-                            btnCancel.Visible = false;
-                            txtClientType.Enabled = false;
-                            grpWorker.Enabled = false;
-                            grpEmployee.Enabled = false;
-                            txtPersonName.Enabled = false;
-                            txtPersonBirthDate.Enabled = false;
-                            txtPersonID.Enabled = true;
-
-                            txtClientType.Text = "";
-                            txtEmployeeJobTitle.Text = "";
-                            txtManagerBonus.Text = "";
-                            txtManagerSalary.Text = "";
-                            txtPersonBirthDate.Text = "";
-                            txtPersonID.Text = "";
-                            txtPersonName.Text = "";
-                            txtWorkerHourlyPay.Text = "";
-
-                            break;
-
-                        }
-                        if (personList.personList[i].GetType() == typeof(Client))
-                        {
-                            Client newClient = new Client();
-                            newClient.Save(this);
-                            personList.personList.RemoveAt(i);
-                            personList.personList.Insert(i, newClient);
-
-                            dbFunctions.UpdatePerson(Convert.ToInt32(txtPersonID.Text), txtPersonName.Text, txtPersonBirthDate.Text);
-                            dbFunctions.UpdateClient(Convert.ToInt32(txtPersonID.Text), txtClientType.Text);
-                            MessageBox.Show("Person :" + txtPersonName.Text +
-                                        " had been upadted from DB and Serializable File. Press OK to continue.",
-                                        "Transaction Complete", MessageBoxButtons.OK);
-
-
-                            matchCounter++;
-
-                            grpEntryControl.Enabled = true;
-                            btnEditUpdate.Enabled = false;
-                            btnDelete.Enabled = false;
-                            btnFindDisplay.Enabled = true;
-                            btnCancel.Visible = false;
-                            txtClientType.Enabled = false;
-                            txtPersonName.Enabled = false;
-                            txtPersonBirthDate.Enabled = false;
-                            txtPersonID.Enabled = true;
-
-                            txtClientType.Text = "";
-                            txtEmployeeJobTitle.Text = "";
-                            txtManagerBonus.Text = "";
-                            txtManagerSalary.Text = "";
-                            txtPersonBirthDate.Text = "";
-                            txtPersonID.Text = "";
-                            txtPersonName.Text = "";
-                            txtWorkerHourlyPay.Text = "";
-
-                            break;
-                        }
-
-
-
-                    }
-
-                }
-
-                if (matchCounter == 0)
+                if (personList.personList.Count == 0)
                 {
                     MessageBox.Show("Person does not exist");
                 }
-            }
+                else
+                {
+                    
 
+                    for (int i = 0; i < personList.personList.Count; i++)
+                    {
+                        if (personList.personList[i].personID == txtPersonID.Text)
+                        {
+                            if (personList.personList[i].GetType() == typeof(Manager))
+                            {
+                                Manager newManager = new Manager();
+                                newManager.Save(this);   
+                                personList.personList.RemoveAt(i);
+                                personList.personList.Insert(i, newManager);
+                                dbFunctions.UpdatePerson(Convert.ToInt32(txtPersonID.Text), txtPersonName.Text, txtPersonBirthDate.Text);
+                                dbFunctions.UpdateManager(Convert.ToInt32(txtPersonID.Text), txtEmployeeJobTitle.Text, Convert.ToDecimal(txtManagerSalary.Text), Convert.ToDecimal(txtManagerBonus.Text));
+                                MessageBox.Show("Person :" + txtPersonName.Text +
+                                            " had been upadted from DB and Serializable File. Press OK to continue.",
+                                            "Transaction Complete", MessageBoxButtons.OK);
+
+                                matchCounter++;
+
+                                grpEntryControl.Enabled = true;
+                                btnEditUpdate.Enabled = false;
+                                btnDelete.Enabled = false;
+                                btnFindDisplay.Enabled = true;
+                                btnCancel.Visible = false;
+                                grpEmployee.Enabled = false;
+                                grpManager.Enabled = false;
+                                txtPersonName.Enabled = false;
+                                txtPersonBirthDate.Enabled = false;
+                                txtClientType.Enabled = false;
+                                txtPersonID.Enabled = true;
+
+                                txtClientType.Text = "";
+                                txtEmployeeJobTitle.Text = "";
+                                txtManagerBonus.Text = "";
+                                txtManagerSalary.Text = "";
+                                txtPersonBirthDate.Text = "";
+                                txtPersonID.Text = "";
+                                txtPersonName.Text = "";
+                                txtWorkerHourlyPay.Text = "";
+
+                                break;
+                            }
+
+                            else if (personList.personList[i].GetType() == typeof(Worker))
+                            {
+                                Worker newWorker = new Worker();
+                                newWorker.Save(this);
+                                personList.personList.RemoveAt(i);
+                                personList.personList.Insert(i, newWorker);
+                                dbFunctions.UpdatePerson(Convert.ToInt32(txtPersonID.Text), txtPersonName.Text, txtPersonBirthDate.Text);
+                                dbFunctions.UpdateWorker(Convert.ToInt32(txtPersonID.Text), txtEmployeeJobTitle.Text, Convert.ToDecimal(txtWorkerHourlyPay.Text));
+                                MessageBox.Show("Person :" + txtPersonName.Text +
+                                            " had been upadted from DB and Serializable File. Press OK to continue.",
+                                            "Transaction Complete", MessageBoxButtons.OK);
+
+                                matchCounter++;
+
+                                grpEntryControl.Enabled = true;
+                                btnEditUpdate.Enabled = false;
+                                btnDelete.Enabled = false;
+                                btnFindDisplay.Enabled = true;
+                                btnCancel.Visible = false;
+                                txtClientType.Enabled = false;
+                                grpWorker.Enabled = false;
+                                grpEmployee.Enabled = false;
+                                txtPersonName.Enabled = false;
+                                txtPersonBirthDate.Enabled = false;
+                                txtPersonID.Enabled = true;
+
+                                txtClientType.Text = "";
+                                txtEmployeeJobTitle.Text = "";
+                                txtManagerBonus.Text = "";
+                                txtManagerSalary.Text = "";
+                                txtPersonBirthDate.Text = "";
+                                txtPersonID.Text = "";
+                                txtPersonName.Text = "";
+                                txtWorkerHourlyPay.Text = "";
+
+                                break;
+
+                            }
+                            else if (personList.personList[i].GetType() == typeof(Client))
+                            {
+                                Client newClient = new Client();
+                                newClient.Save(this);
+                                personList.personList.RemoveAt(i);
+                                personList.personList.Insert(i, newClient);
+
+                                dbFunctions.UpdatePerson(Convert.ToInt32(txtPersonID.Text), txtPersonName.Text, txtPersonBirthDate.Text);
+                                dbFunctions.UpdateClient(Convert.ToInt32(txtPersonID.Text), txtClientType.Text);
+                                MessageBox.Show("Person :" + txtPersonName.Text +
+                                            " had been upadted from DB and Serializable File. Press OK to continue.",
+                                            "Transaction Complete", MessageBoxButtons.OK);
+
+
+                                matchCounter++;
+
+                                grpEntryControl.Enabled = true;
+                                btnEditUpdate.Enabled = false;
+                                btnDelete.Enabled = false;
+                                btnFindDisplay.Enabled = true;
+                                btnCancel.Visible = false;
+                                txtClientType.Enabled = false;
+                                txtPersonName.Enabled = false;
+                                txtPersonBirthDate.Enabled = false;
+                                txtPersonID.Enabled = true;
+
+                                txtClientType.Text = "";
+                                txtEmployeeJobTitle.Text = "";
+                                txtManagerBonus.Text = "";
+                                txtManagerSalary.Text = "";
+                                txtPersonBirthDate.Text = "";
+                                txtPersonID.Text = "";
+                                txtPersonName.Text = "";
+                                txtWorkerHourlyPay.Text = "";
+
+                                break;
+                            }
+
+                        }
+
+                    }
+                }
+            }
+    
         }
 
         private void btnClient_Click(object sender, EventArgs e)
