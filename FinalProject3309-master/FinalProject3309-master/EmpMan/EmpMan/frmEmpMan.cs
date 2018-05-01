@@ -292,8 +292,16 @@ namespace EmpMan
             }
             else
             {
-                Manager manager = new Manager();
-                displayDbInformation(manager);
+                bool success;
+               // OleDbDataReader dataManager = dbFunctions.SelectPersonFromManager(Convert.ToInt32(txtPersonID.Text), out success);
+                //OleDbDataReader dataWorker = dbFunctions.SelectPersonFromWorker(Convert.ToInt32(txtPersonID.Text), out success);
+                //OleDbDataReader dataClient = dbFunctions.SelectPersonFromClient(Convert.ToInt32(txtPersonID.Text), out success);
+                
+                    //Client newClient = new Client();
+                    //Manager manager = new Manager();
+                   // displayDbInformation(newClient);
+                    displayDbInformation(worker);
+
                 for (int i = 0; i < personList.personList.Count; i++)
                 {
                     
@@ -390,7 +398,9 @@ namespace EmpMan
                         {
                             
                             Manager newManager = new Manager();
+
                             newManager.Save(this);
+                            displayDbInformation(manager);
                             personList.personList.RemoveAt(i);
                             personList.personList.Insert(i, newManager);
                             dbFunctions.UpdatePerson(Convert.ToInt32(txtPersonID.Text),txtPersonName.Text,txtPersonBirthDate.Text);

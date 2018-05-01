@@ -205,10 +205,11 @@ namespace EmpMan.Classes
         public OleDbDataReader SelectPersonFromManager(int personID, out bool OKFlag)
         {
             // string strSelectPerson = "SELECT * FROM CLIENT WHERE CLIENT.fldID = " + personID; 
-            string strSelectManager = "SELECT PERSON.fldID, PERSON.fldName, PERSON.fldBirthDate, EMPLOYEE.fldTitle, MANAGER.fldSalary, " +
-                " MANAGER.fldBonus FROM (PERSON " +
-                 "INNER JOIN MANAGER ON PERSON.fldID = EMPPLOYEE.fldID) "
-               + "INNER JOIN EMPLOYEE ON EMPLOYEE.fldID = PERSON.fldID "
+            
+            string strSelectManager = "SELECT PERSON.fldID, PERSON.fldName, PERSON.fldBirthDate, "
+               + "EMPLOYEE.fldTitle, MANAGER.fldSalary, MANAGER.fldBonus FROM(PERSON "
+               + "INNER JOIN EMPLOYEE ON EMPLOYEE.fldID = PERSON.fldID) "
+               + "INNER JOIN MANAGER ON MANAGER.fldID = PERSON.fldID "
                + "WHERE PERSON.fldID = " + personID + ";";
 
             OleDbConnection myConnection = new OleDbConnection(strConnection);
@@ -234,7 +235,7 @@ namespace EmpMan.Classes
         public OleDbDataReader SelectPersonFromWorker(int personID, out bool OKFlag)
         {
             // string strSelectPerson = "SELECT * FROM CLIENT WHERE CLIENT.fldID = " + personID; 
-            string strSelectWorker = "SELECT PERSON.fldID, PERSON.fldName, PERSON.fldBirthDate, EMPLOYEE.fldTitle "
+            string strSelectWorker = "SELECT PERSON.fldID, PERSON.fldName, PERSON.fldBirthDate, EMPLOYEE.fldTitle, "
             + "WORKER.fldHourlyPay FROM (PERSON "
             + "INNER JOIN EMPLOYEE ON EMPLOYEE.fldID = PERSON.fldID) "
             + "INNER JOIN WORKER ON WORKER.fldID = PERSON.fldID "
