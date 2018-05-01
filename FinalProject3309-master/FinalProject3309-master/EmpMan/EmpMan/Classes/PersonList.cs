@@ -39,15 +39,13 @@ namespace EmpMan.Classes
 
                     }
                 }
-<<<<<<< HEAD
+
                 if (matchCounter == 0)
                 {
                     add = true;
                     personList.Add(p);
                 }
                 
-=======
->>>>>>> db180e5e5caa6673464e524052cd4ac50a91bc88
             }
             return add;
         }

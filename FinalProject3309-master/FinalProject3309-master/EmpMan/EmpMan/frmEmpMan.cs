@@ -26,6 +26,8 @@ namespace EmpMan
 
         int currentIndex = -1;
         int recordsProcessedCount = 0;
+        string dbStringPerson = " ";
+        string dbStringRest = " ";
 
         public frmEmpMan()
         {
@@ -100,7 +102,7 @@ namespace EmpMan
                     dbFunctions.InsertPerson(Convert.ToInt32(txtPersonID.Text), txtPersonName.Text,
                     txtPersonBirthDate.Text);
                     dbFunctions.InsertClient(Convert.ToInt32(txtPersonID.Text), txtClientType.Text);
-                    MessageBox.Show("Person :" + txtPersonName.Text+
+                    MessageBox.Show("Person :" + txtPersonName.Text +
                                     " Added to DB and Serializable File. Press OK to continue.",
                                     "Transaction Complete", MessageBoxButtons.OK);
 
@@ -152,9 +154,9 @@ namespace EmpMan
 
                 if (personList.addPerson(manager))
                 {
-                    dbFunctions.InsertPerson(Convert.ToInt32(txtPersonID.Text), txtPersonName.Text,txtPersonBirthDate.Text);
+                    dbFunctions.InsertPerson(Convert.ToInt32(txtPersonID.Text), txtPersonName.Text, txtPersonBirthDate.Text);
                     dbFunctions.InsertEmployee(Convert.ToInt32(txtPersonID.Text), txtEmployeeJobTitle.Text);
-                    dbFunctions.InsertManager(Convert.ToInt32(txtPersonID.Text), Convert.ToInt32(txtManagerSalary.Text) , Convert.ToInt32(txtManagerBonus.Text));
+                    dbFunctions.InsertManager(Convert.ToInt32(txtPersonID.Text), Convert.ToInt32(txtManagerSalary.Text), Convert.ToInt32(txtManagerBonus.Text));
                     MessageBox.Show("Person :" + txtPersonName.Text +
                                     " Added to DB and Serializable File. Press OK to continue.",
                                     "Transaction Complete", MessageBoxButtons.OK);
@@ -222,7 +224,7 @@ namespace EmpMan
             int matchCounter = 0;
             if (personList.personList.Count == 0)
             {
-                MessageBox.Show("Person is not deleted ");
+                MessageBox.Show("Person is not deleted");
             }
 
             else
@@ -271,6 +273,8 @@ namespace EmpMan
                     btnFindDisplay.Enabled = true;
                     btnCancel.Visible = false;
                     grpPerson.Enabled = false;
+                    txtPersonName.Enabled = false;
+                    txtPersonBirthDate.Enabled = false;
                     txtPersonID.Enabled = true;
                 }
             }
@@ -288,93 +292,102 @@ namespace EmpMan
             else if (personList.personList.Count == 0)
 
             {
-                MessageBox.Show("This Person do not exist in the Serializable File ");
+                MessageBox.Show("Person does not exist");
             }
             else
             {
-                bool success;
-               // OleDbDataReader dataManager = dbFunctions.SelectPersonFromManager(Convert.ToInt32(txtPersonID.Text), out success);
-                //OleDbDataReader dataWorker = dbFunctions.SelectPersonFromWorker(Convert.ToInt32(txtPersonID.Text), out success);
-                //OleDbDataReader dataClient = dbFunctions.SelectPersonFromClient(Convert.ToInt32(txtPersonID.Text), out success);
-                
-                    //Client newClient = new Client();
-                    //Manager manager = new Manager();
-                   // displayDbInformation(newClient);
-                    displayDbInformation(worker);
+                Client newclient = new Client();
+                newclient.personID = txtPersonID.Text;
+                Manager newmanager = new Manager();
+                newmanager.personID = txtPersonID.Text;
+                Worker newworker = new Worker();
+                newworker.personID = txtPersonID.Text;
+                string[] person;
+                string[] children;
 
-                for (int i = 0; i < personList.personList.Count; i++)
+                if (displayDbInformation(newclient) == true)
                 {
-                    
-                    if (personList.personList[i].personID == txtPersonID.Text)
+                    person = dbStringPerson.Split('*');
+                    children = dbStringRest.Split('*');
+                    txtPersonID.Text = person[0];
+                    txtPersonName.Text = person[1];
+                    txtPersonBirthDate.Text = person[2];
+                    txtClientType.Text = children[0];
+
+                    matchCounter++;
+
+                    grpEntryControl.Enabled = false;
+                    txtPersonID.Enabled = false;
+                    txtPersonName.Enabled = true;
+                    txtPersonBirthDate.Enabled = true;
+                    txtClientType.Enabled = true;
+                    grpEmployee.Enabled = false;
+                    grpManager.Enabled = false;
+                    btnEditUpdate.Enabled = true;
+                    btnDelete.Enabled = true;
+                    btnFindDisplay.Enabled = false;
+                    btnCancel.Visible = true;
+                }
+                else if (displayDbInformation(newclient) == false)
+                {
+
+                    if (displayDbInformation(newmanager) == true)
                     {
-                        if (personList.personList[i].GetType() == typeof(Manager))
-                        {
+                        person = dbStringPerson.Split('*');
+                        children = dbStringRest.Split('*');
+                        txtPersonID.Text = person[0];
+                        txtPersonName.Text = person[1];
+                        txtPersonBirthDate.Text = person[2];
+                        txtEmployeeJobTitle.Text = children[0];
+                        txtManagerSalary.Text = children[1];
+                        txtManagerBonus.Text = children[2];
 
-                            
-                            personList.personList[i].Display(this);
+                        matchCounter++;
+
+                        grpEntryControl.Enabled = false;
+                        txtPersonID.Enabled = false;
+                        txtPersonName.Enabled = true;
+                        txtPersonBirthDate.Enabled = true;
+                        grpEmployee.Enabled = true;
+                        grpManager.Enabled = true;
+                        grpWorker.Enabled = false;
+                        btnEditUpdate.Enabled = true;
+                        btnDelete.Enabled = true;
+                        btnFindDisplay.Enabled = false;
+                        btnCancel.Visible = true;
+                    }
+                    else if (displayDbInformation(newmanager) == false)
+                    {
+                        if (displayDbInformation(newworker))
+                        {
+                            person = dbStringPerson.Split('*');
+                            children = dbStringRest.Split('*');
+                            txtPersonID.Text = person[0];
+                            txtPersonName.Text = person[1];
+                            txtPersonBirthDate.Text = person[2];
+                            txtEmployeeJobTitle.Text = children[0];
+                            txtWorkerHourlyPay.Text = children[1];
+
                             matchCounter++;
+
                             grpEntryControl.Enabled = false;
                             txtPersonID.Enabled = false;
                             txtPersonName.Enabled = true;
                             txtPersonBirthDate.Enabled = true;
                             grpEmployee.Enabled = true;
-                            grpManager.Enabled = true;
-                            btnEditUpdate.Enabled = true;
-                            btnDelete.Enabled = true;
-                            btnFindDisplay.Enabled = false;
-                            btnCancel.Visible = true;
-
-                            break;
-
-
-                        }
-                        if (personList.personList[i].GetType() == typeof(Worker))
-                        {
-
-                           
-                            personList.personList[i].Display(this);
-                            
-                            matchCounter++;
-
-                            grpEntryControl.Enabled = false;
-                            txtPersonID.Enabled = false;
-                            txtPersonName.Enabled = true;
-                            txtPersonBirthDate.Enabled = true;
-                            grpEmployee.Enabled = true;
+                            grpManager.Enabled = false;
                             grpWorker.Enabled = true;
                             btnEditUpdate.Enabled = true;
                             btnDelete.Enabled = true;
                             btnFindDisplay.Enabled = false;
                             btnCancel.Visible = true;
-
-                            break;
                         }
-                        if (personList.personList[i].GetType() == typeof(Client))
-                        {
-                            
-                            personList.personList[i].Display(this);
-                            matchCounter++;
-                            txtClientType.Enabled = true;
-                            grpEntryControl.Enabled = false;
-                            txtPersonID.Enabled = false;
-                            txtPersonName.Enabled = true;
-                            txtPersonBirthDate.Enabled = true;
-                            grpClient.Enabled = true;
-                            btnEditUpdate.Enabled = true;
-                            btnDelete.Enabled = true;
-                            btnFindDisplay.Enabled = false;
-                            btnCancel.Visible = true;
-
-                            break;
-                        }
-
-
                     }
                 }
 
                 if (matchCounter == 0)
                 {
-                    MessageBox.Show("Person does not exist in Serializable File");
+                    MessageBox.Show("Person does not exist");
                 }
             }
         }
@@ -396,15 +409,13 @@ namespace EmpMan
                     {
                         if (personList.personList[i].GetType() == typeof(Manager))
                         {
-                            
-                            Manager newManager = new Manager();
 
+                            Manager newManager = new Manager();
                             newManager.Save(this);
-                            displayDbInformation(manager);
                             personList.personList.RemoveAt(i);
                             personList.personList.Insert(i, newManager);
-                            dbFunctions.UpdatePerson(Convert.ToInt32(txtPersonID.Text),txtPersonName.Text,txtPersonBirthDate.Text);
-                            dbFunctions.UpdateManager(Convert.ToInt32(txtPersonID.Text),txtEmployeeJobTitle.Text,Convert.ToDecimal(txtManagerSalary.Text), Convert.ToDecimal(txtManagerBonus.Text));
+                            dbFunctions.UpdatePerson(Convert.ToInt32(txtPersonID.Text), txtPersonName.Text, txtPersonBirthDate.Text);
+                            dbFunctions.UpdateManager(Convert.ToInt32(txtPersonID.Text), txtEmployeeJobTitle.Text, Convert.ToDecimal(txtManagerSalary.Text), Convert.ToDecimal(txtManagerBonus.Text));
                             MessageBox.Show("Person :" + txtPersonName.Text +
                                         " had been upadted from DB and Serializable File. Press OK to continue.",
                                         "Transaction Complete", MessageBoxButtons.OK);
@@ -613,19 +624,15 @@ namespace EmpMan
 
         }
 
-        public void displayDbInformation(Person p)
+        public bool displayDbInformation(Person p)
         {
             bool successFlag;
             if (p == null)
             {
-                MessageBox.Show("Person p reference is null. System Error. Program Terminated.",
-                    "displayDbInformation Reference Error", MessageBoxButtons.OK);
-                this.Close();
+                return false;
             }  // end p == null if
 
             OleDbDataReader myDataReader;
-            string dbStringPerson = " ";
-            string dbStringRest = " ";
 
             if (p.GetType() == typeof(Client))     // Process CLIENT
             {
@@ -633,81 +640,89 @@ namespace EmpMan
                 myDataReader.Read();
                 if (!myDataReader.HasRows)
                 {
-                    MessageBox.Show("DataReader returned null. No match found. DB and Serializable File not synched.  Program Terminated",
-                        "Client SELECT Error", MessageBoxButtons.OK);
-                    this.Close();
+                    return false;
                 }
                 else
                 {
                     MessageBox.Show("Client record found and read.  ", "Client Record Found", MessageBoxButtons.OK);
                     try
                     {
-                        dbStringPerson = myDataReader[0].ToString() + "   " + myDataReader[1].ToString() + "   ";
+                        dbStringPerson = myDataReader[0].ToString() + "*" + myDataReader[1].ToString() + "*";
                         dbStringPerson = dbStringPerson + ((DateTime)myDataReader[2]).ToString("MM/dd/yyyy") + Environment.NewLine;
                         dbStringRest = myDataReader[3].ToString();
+                        return true;
                     }
                     catch
                     {
-                        MessageBox.Show("DataReader Client Data Conversion Error. Program Terminated. ",
-                            "Client SELECT Error", MessageBoxButtons.OK);
-                        this.Close();
+                        return false;
                     }  // end try-catch
                 }  // end else on myDataReader HasRows
             }  // end processing Client 
 
             else if (p.GetType() == typeof(Manager))     // Process MANAGER
             {
-                myDataReader = dbFunctions.SelectPersonFromManager(Convert.ToInt32(txtPersonID.Text), out successFlag);
-                myDataReader.Read();
+
+                try
+                {
+                    myDataReader = dbFunctions.SelectPersonFromManager(Convert.ToInt32(txtPersonID.Text), out successFlag);
+                    myDataReader.Read();
+                }
+                catch
+                {
+                    return false;
+                }
+
                 if (!myDataReader.HasRows)
                 {
-                    MessageBox.Show("DataReader returned null. No match found. DB and Serializable File not synched.  Program Terminated",
-                        "Manager SELECT Error", MessageBoxButtons.OK);
-                    this.Close();
+
+                    return false;
                 }
                 else
                 {
                     MessageBox.Show("Manager record found and read.", "Manager Record Found", MessageBoxButtons.OK);
                     try
                     {
-                        dbStringPerson = myDataReader[0].ToString() + "   " + myDataReader[1].ToString() + "   ";
+                        dbStringPerson = myDataReader[0].ToString() + "*" + myDataReader[1].ToString() + "*";
                         dbStringPerson = dbStringPerson + ((DateTime)myDataReader[2]).ToString("MM/dd/yyyy") + Environment.NewLine;
-                        dbStringRest = myDataReader[3].ToString() + "   " + Convert.ToDecimal(myDataReader[4]).ToString()
-                            + "   " + Convert.ToDecimal(myDataReader[5]).ToString();
+                        dbStringRest = myDataReader[3].ToString() + "*" + Convert.ToDecimal(myDataReader[4]).ToString()
+                            + "*" + Convert.ToDecimal(myDataReader[5]).ToString();
+                        return true;
                     }
                     catch
                     {
-                        MessageBox.Show("DataReader Manager Data Conversion Error. Program Terminated. ",
-                            "Manager SELECT Error", MessageBoxButtons.OK);
-                        this.Close();
+                        return false;
                     }  // end try-catch
                 }  // end else on myDataReader HasRows
             }  // end Processing Manager
 
             else if (p.GetType() == typeof(Worker))   /// Process WORKER
             {
-                myDataReader = dbFunctions.SelectPersonFromWorker(Convert.ToInt32(txtPersonID.Text), out successFlag);
-                myDataReader.Read();
+                try
+                {
+                    myDataReader = dbFunctions.SelectPersonFromManager(Convert.ToInt32(txtPersonID.Text), out successFlag);
+                    myDataReader.Read();
+                }
+                catch
+                {
+                    return false;
+                }
                 if (!myDataReader.HasRows)
                 {
-                    MessageBox.Show("DataReader returned null. No match found. DB and Serializable File not synched.  Program Terminated",
-                        "Worker SELECT Error", MessageBoxButtons.OK);
-                    this.Close();
+                    return false;
                 }
                 else
                 {
                     MessageBox.Show("Worker record found and read.  ", "Worker Record Found", MessageBoxButtons.OK);
                     try
                     {
-                        dbStringPerson = myDataReader[0].ToString() + "   " + myDataReader[1].ToString() + "   "
+                        dbStringPerson = myDataReader[0].ToString() + "*" + myDataReader[1].ToString() + "*"
                             + ((DateTime)myDataReader[2]).ToString("MM/dd/yyyy") + Environment.NewLine;
-                        dbStringRest = myDataReader[3].ToString() + "   " + Convert.ToDecimal(myDataReader[4]).ToString();
+                        dbStringRest = myDataReader[3].ToString() + "*" + Convert.ToDecimal(myDataReader[4]).ToString();
+                        return true;
                     }
                     catch
                     {
-                        MessageBox.Show("DataReader Worker Data Conversion Error. Program Terminated.",
-                            "Worker SELECT Error", MessageBoxButtons.OK);
-                        this.Close();
+                        return false;
                     }  // end try-catch
                 }  // end else on myDataReader HasRows
             }  // end processing Worker
@@ -717,10 +732,10 @@ namespace EmpMan
                     MessageBoxButtons.OK);
                 MessageBox.Show("Number of records processed = " + recordsProcessedCount.ToString(),
                     "Exit Message", MessageBoxButtons.OK);
-                this.Close();
+                return false;
             }  // end multiple alternative if
             MessageBox.Show(dbStringPerson + dbStringRest, "DataBase Retrieval", MessageBoxButtons.OK);
         }  // end displayDbInformation
-        
+
     }
 }
