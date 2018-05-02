@@ -23,7 +23,7 @@ namespace EmpMan.Classes
         //cannot be blank
         public Boolean checkName(string s)
         {
-            string[] Characters = new string[] { "`", "~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+", "[", "{", "]", "}", ";", ":", "'", ",", "<", ".", ">", "/", "?", " " };
+            string[] Characters = new string[] { "`", "~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+", "[", "{", "]", "}", ";", ":", "'", ",", "<", ".", ">", "/", "?"};
             if (Characters.Any(c => s.Contains(c))) //check for special characters
             {
                 //MessageBox.Show("name is special character");
@@ -35,6 +35,11 @@ namespace EmpMan.Classes
                 return false;
             }
             else if (s == "") //check if is blank
+            {
+                //MessageBox.Show("name is blank");
+                return false;
+            }
+            else if(s.All(c => c == ' '))
             {
                 //MessageBox.Show("name is blank");
                 return false;
@@ -160,6 +165,10 @@ namespace EmpMan.Classes
             if (s == "")
             {
                 //MessageBox.Show("blank");
+                return false;
+            }
+            else if(s.Length != 5)
+            {
                 return false;
             }
             else if (s.Any(c => char.IsDigit(c)) == false)
