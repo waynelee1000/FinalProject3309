@@ -319,117 +319,17 @@ namespace EmpMan
 
             bool hasOk = true;
 
-            if (personList.personList.Count != 0)
+            DialogResult dialogResult = MessageBox.Show("Do you want to delete?","Yes or no",MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                for (int i = 0; i < personList.personList.Count(); i++)
+                if (personList.personList.Count != 0)
                 {
-                    if (personList.personList[i].personID == txtPersonID.Text)
+                    for (int i = 0; i < personList.personList.Count(); i++)
                     {
-                        //deleting person from both list and database
-                        personList.personList.RemoveAt(i);
-                        dbFunctions.Delete(Convert.ToInt32(txtPersonID.Text));
-                        MessageBox.Show("Person :" + txtPersonName.Text +
-                                        " had been deleted from DB and Serializable File. Press OK to continue.",
-                                        "Transaction Complete", MessageBoxButtons.OK);
-
-                        //Enabling and disbling certain buttons and textboxes for deletion
-                        grpEntryControl.Enabled = true;
-                        btnEditUpdate.Enabled = false;
-                        btnDelete.Enabled = false;
-                        btnFindDisplay.Enabled = true;
-                        btnCancel.Visible = false;
-                        grpClient.Enabled = false;
-                        grpEmployee.Enabled = false;
-                        grpManager.Enabled = false;
-                        grpWorker.Enabled = false;
-                        txtPersonName.Enabled = false;
-                        txtPersonBirthDate.Enabled = false;
-                        txtPersonID.Enabled = true;
-
-                        txtClientType.Text = "";
-                        txtEmployeeJobTitle.Text = "";
-                        txtManagerBonus.Text = "";
-                        txtManagerSalary.Text = "";
-                        txtPersonBirthDate.Text = "";
-                        txtPersonID.Text = "";
-                        txtPersonName.Text = "";
-                        txtWorkerHourlyPay.Text = "";
-                        break;
-                    }
-                    // If txtPerson cannot be found in the list but exist in the database
-                    else if (txtPersonID.Text != "")
-                    {
-                        if (dbFunctions.SelectPersonFromClient(int.Parse(txtPersonID.Text), out hasOk).HasRows == true)
+                        if (personList.personList[i].personID == txtPersonID.Text)
                         {
-                            //delete client from the database
-                            dbFunctions.Delete(Convert.ToInt32(txtPersonID.Text));
-
-                            MessageBox.Show("Person :" + txtPersonName.Text +
-                                            " had been deleted from DB and Serializable File. Press OK to continue.",
-                                            "Transaction Complete", MessageBoxButtons.OK);
-
-                            //Enabling and disbling certain buttons and textboxes for deletion
-
-                            grpEntryControl.Enabled = true;
-                            btnEditUpdate.Enabled = false;
-                            btnDelete.Enabled = false;
-                            btnFindDisplay.Enabled = true;
-                            btnCancel.Visible = false;
-                            grpClient.Enabled = false;
-                            grpEmployee.Enabled = false;
-                            grpManager.Enabled = false;
-                            grpWorker.Enabled = false;
-                            txtPersonName.Enabled = false;
-                            txtPersonBirthDate.Enabled = false;
-                            txtPersonID.Enabled = true;
-
-                            txtClientType.Text = "";
-                            txtEmployeeJobTitle.Text = "";
-                            txtManagerBonus.Text = "";
-                            txtManagerSalary.Text = "";
-                            txtPersonBirthDate.Text = "";
-                            txtPersonID.Text = "";
-                            txtPersonName.Text = "";
-                            txtWorkerHourlyPay.Text = "";
-                            break;
-
-                        }
-                        else if (dbFunctions.SelectPersonFromManager(int.Parse(txtPersonID.Text), out hasOk).HasRows == true)
-                        {
-                            //Delete Manager from database
-                            dbFunctions.Delete(Convert.ToInt32(txtPersonID.Text));
-                            MessageBox.Show("Person :" + txtPersonName.Text +
-                                            " had been deleted from DB and Serializable File. Press OK to continue.",
-                                            "Transaction Complete", MessageBoxButtons.OK);
-                            //Enabling and disbling certain buttons and textboxes for deletion
-                            grpEntryControl.Enabled = true;
-                            btnEditUpdate.Enabled = false;
-                            btnDelete.Enabled = false;
-                            btnFindDisplay.Enabled = true;
-                            btnCancel.Visible = false;
-                            grpClient.Enabled = false;
-                            grpEmployee.Enabled = false;
-                            grpManager.Enabled = false;
-                            grpWorker.Enabled = false;
-                            txtPersonName.Enabled = false;
-                            txtPersonBirthDate.Enabled = false;
-                            txtPersonID.Enabled = true;
-
-                            txtClientType.Text = "";
-                            txtEmployeeJobTitle.Text = "";
-                            txtManagerBonus.Text = "";
-                            txtManagerSalary.Text = "";
-                            txtPersonBirthDate.Text = "";
-                            txtPersonID.Text = "";
-                            txtPersonName.Text = "";
-                            txtWorkerHourlyPay.Text = "";
-
-                            break;
-
-                        }
-                        else if (dbFunctions.SelectPersonFromWorker(int.Parse(txtPersonID.Text), out hasOk).HasRows == true)
-                        {
-                            //Delete worker from database
+                            //deleting person from both list and database
+                            personList.personList.RemoveAt(i);
                             dbFunctions.Delete(Convert.ToInt32(txtPersonID.Text));
                             MessageBox.Show("Person :" + txtPersonName.Text +
                                             " had been deleted from DB and Serializable File. Press OK to continue.",
@@ -459,13 +359,118 @@ namespace EmpMan
                             txtWorkerHourlyPay.Text = "";
                             break;
                         }
-                        else
+                        // If txtPerson cannot be found in the list but exist in the database
+                        else if (txtPersonID.Text != "")
                         {
-                            MessageBox.Show("Person cannot be found");
+                            if (dbFunctions.SelectPersonFromClient(int.Parse(txtPersonID.Text), out hasOk).HasRows == true)
+                            {
+                                //delete client from the database
+                                dbFunctions.Delete(Convert.ToInt32(txtPersonID.Text));
+
+                                MessageBox.Show("Person :" + txtPersonName.Text +
+                                                " had been deleted from DB and Serializable File. Press OK to continue.",
+                                                "Transaction Complete", MessageBoxButtons.OK);
+
+                                //Enabling and disbling certain buttons and textboxes for deletion
+
+                                grpEntryControl.Enabled = true;
+                                btnEditUpdate.Enabled = false;
+                                btnDelete.Enabled = false;
+                                btnFindDisplay.Enabled = true;
+                                btnCancel.Visible = false;
+                                grpClient.Enabled = false;
+                                grpEmployee.Enabled = false;
+                                grpManager.Enabled = false;
+                                grpWorker.Enabled = false;
+                                txtPersonName.Enabled = false;
+                                txtPersonBirthDate.Enabled = false;
+                                txtPersonID.Enabled = true;
+
+                                txtClientType.Text = "";
+                                txtEmployeeJobTitle.Text = "";
+                                txtManagerBonus.Text = "";
+                                txtManagerSalary.Text = "";
+                                txtPersonBirthDate.Text = "";
+                                txtPersonID.Text = "";
+                                txtPersonName.Text = "";
+                                txtWorkerHourlyPay.Text = "";
+                                break;
+
+                            }
+                            else if (dbFunctions.SelectPersonFromManager(int.Parse(txtPersonID.Text), out hasOk).HasRows == true)
+                            {
+                                //Delete Manager from database
+                                dbFunctions.Delete(Convert.ToInt32(txtPersonID.Text));
+                                MessageBox.Show("Person :" + txtPersonName.Text +
+                                                " had been deleted from DB and Serializable File. Press OK to continue.",
+                                                "Transaction Complete", MessageBoxButtons.OK);
+                                //Enabling and disbling certain buttons and textboxes for deletion
+                                grpEntryControl.Enabled = true;
+                                btnEditUpdate.Enabled = false;
+                                btnDelete.Enabled = false;
+                                btnFindDisplay.Enabled = true;
+                                btnCancel.Visible = false;
+                                grpClient.Enabled = false;
+                                grpEmployee.Enabled = false;
+                                grpManager.Enabled = false;
+                                grpWorker.Enabled = false;
+                                txtPersonName.Enabled = false;
+                                txtPersonBirthDate.Enabled = false;
+                                txtPersonID.Enabled = true;
+
+                                txtClientType.Text = "";
+                                txtEmployeeJobTitle.Text = "";
+                                txtManagerBonus.Text = "";
+                                txtManagerSalary.Text = "";
+                                txtPersonBirthDate.Text = "";
+                                txtPersonID.Text = "";
+                                txtPersonName.Text = "";
+                                txtWorkerHourlyPay.Text = "";
+
+                                break;
+
+                            }
+                            else if (dbFunctions.SelectPersonFromWorker(int.Parse(txtPersonID.Text), out hasOk).HasRows == true)
+                            {
+                                //Delete worker from database
+                                dbFunctions.Delete(Convert.ToInt32(txtPersonID.Text));
+                                MessageBox.Show("Person :" + txtPersonName.Text +
+                                                " had been deleted from DB and Serializable File. Press OK to continue.",
+                                                "Transaction Complete", MessageBoxButtons.OK);
+
+                                //Enabling and disbling certain buttons and textboxes for deletion
+                                grpEntryControl.Enabled = true;
+                                btnEditUpdate.Enabled = false;
+                                btnDelete.Enabled = false;
+                                btnFindDisplay.Enabled = true;
+                                btnCancel.Visible = false;
+                                grpClient.Enabled = false;
+                                grpEmployee.Enabled = false;
+                                grpManager.Enabled = false;
+                                grpWorker.Enabled = false;
+                                txtPersonName.Enabled = false;
+                                txtPersonBirthDate.Enabled = false;
+                                txtPersonID.Enabled = true;
+
+                                txtClientType.Text = "";
+                                txtEmployeeJobTitle.Text = "";
+                                txtManagerBonus.Text = "";
+                                txtManagerSalary.Text = "";
+                                txtPersonBirthDate.Text = "";
+                                txtPersonID.Text = "";
+                                txtPersonName.Text = "";
+                                txtWorkerHourlyPay.Text = "";
+                                break;
+                            }
                         }
                     }
                 }
             }
+            else if (dialogResult == DialogResult.No)
+            {
+
+            }
+
             
         }
         //button to display database information onto the form
