@@ -8,14 +8,19 @@ using System.Windows.Forms;
 namespace EmpMan.Classes
 {
     [Serializable()]
+
+    //Encapsulates methods for manipulating the personlist
     public class PersonList
     {
         public List<Person> personList = new List<Person>();
+
+        //parameterless constructor
         public PersonList()
         {
 
-        }
+        }//end constructor
 
+        //method to add a person to the list
         public bool addPerson(Person p)
         {
             int matchCounter = 0;
@@ -48,21 +53,22 @@ namespace EmpMan.Classes
                 
             }
             return add;
-        }
+        } //end addPerson
 
+        //method to count items in the personlist
         public int Count()
         {
             int num = personList.Count();
             return num;
-        }
+        }// end Count
 
+        //method to display items in the personlist
         public void displayList() {
             string PersonListString = " ";
             for (int i = 0; i < personList.Count; i++) {
                 PersonListString += "PersonID:"+ personList[i].personID +" "+ personList[i].GetType()+"\n";
             }
             MessageBox.Show(PersonListString, "List in Serializable");
-        }
-
-    }
-}
+        }// end displayList
+    } //end class
+} //end namespace

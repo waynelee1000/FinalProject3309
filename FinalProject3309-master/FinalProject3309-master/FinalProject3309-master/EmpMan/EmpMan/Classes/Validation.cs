@@ -12,7 +12,7 @@ namespace EmpMan.Classes
 {
     class Validation
     {
-        //constructor
+        //parameterless constructor
         public Validation()
         {
 
@@ -165,6 +165,10 @@ namespace EmpMan.Classes
             if (s == "")
             {
                 //MessageBox.Show("blank");
+                return false;
+            }
+            else if(s.Length != 5)  
+            {
                 return false;
             }
             else if (s.Any(c => char.IsDigit(c)) == false)
