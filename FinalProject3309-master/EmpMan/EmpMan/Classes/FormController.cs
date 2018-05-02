@@ -18,6 +18,10 @@ namespace EmpMan
     class FormController
     {
         private frmEmpMan f;
+        public FormController()
+        {
+
+        }
         public FormController(frmEmpMan parentForm)
         {
             f = parentForm;
@@ -198,6 +202,34 @@ namespace EmpMan
             f.txtManagerBonus.Text = "";
             f.txtWorkerHourlyPay.Text = "";
         } // end Clear
+
+        public static void initialActivate(frmEmpMan f)
+        {
+            f.lblID.Enabled = true;
+            f.txtPersonID.Enabled = true;
+            f.lblName.Enabled = true;
+            f.txtPersonName.Enabled = true;
+            f.lblBirthDate.Enabled = true;
+            f.txtPersonBirthDate.Enabled = true;
+        }
+        public static void deactivatePerson1(frmEmpMan f)
+        {
+            f.grpPerson.Enabled = false;
+        }
+        public static void createClient(frmEmpMan f)
+        {
+            f.grpClient.Enabled = true;
+        }
+        public static void createManager(frmEmpMan f)
+        {
+            f.grpEmployee.Enabled = true;
+            f.grpManager.Enabled = true;
+        }
+        public static void createWorker(frmEmpMan f)
+        {
+            f.grpEmployee.Enabled = true;
+            f.grpClient.Enabled = true;
+        }
 
     }  // end FormController class
 }  // end namespace

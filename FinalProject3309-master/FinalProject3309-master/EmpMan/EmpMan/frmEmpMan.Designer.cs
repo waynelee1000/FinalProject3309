@@ -78,10 +78,9 @@
             // 
             // btnCreateClient
             // 
-            this.btnCreateClient.Location = new System.Drawing.Point(154, 404);
-            this.btnCreateClient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCreateClient.Location = new System.Drawing.Point(116, 328);
             this.btnCreateClient.Name = "btnCreateClient";
-            this.btnCreateClient.Size = new System.Drawing.Size(145, 28);
+            this.btnCreateClient.Size = new System.Drawing.Size(109, 23);
             this.btnCreateClient.TabIndex = 0;
             this.btnCreateClient.Text = "Create Client";
             this.btnCreateClient.UseVisualStyleBackColor = true;
@@ -90,10 +89,9 @@
             // 
             // btnCreateManager
             // 
-            this.btnCreateManager.Location = new System.Drawing.Point(154, 404);
-            this.btnCreateManager.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCreateManager.Location = new System.Drawing.Point(116, 328);
             this.btnCreateManager.Name = "btnCreateManager";
-            this.btnCreateManager.Size = new System.Drawing.Size(145, 28);
+            this.btnCreateManager.Size = new System.Drawing.Size(109, 23);
             this.btnCreateManager.TabIndex = 1;
             this.btnCreateManager.Text = "Create Manager";
             this.btnCreateManager.UseVisualStyleBackColor = true;
@@ -102,10 +100,9 @@
             // 
             // btnCreateWorker
             // 
-            this.btnCreateWorker.Location = new System.Drawing.Point(154, 404);
-            this.btnCreateWorker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCreateWorker.Location = new System.Drawing.Point(116, 328);
             this.btnCreateWorker.Name = "btnCreateWorker";
-            this.btnCreateWorker.Size = new System.Drawing.Size(145, 28);
+            this.btnCreateWorker.Size = new System.Drawing.Size(109, 23);
             this.btnCreateWorker.TabIndex = 2;
             this.btnCreateWorker.Text = "Create Worker";
             this.btnCreateWorker.UseVisualStyleBackColor = true;
@@ -116,10 +113,9 @@
             // 
             this.lblDataEntry.AutoSize = true;
             this.lblDataEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDataEntry.Location = new System.Drawing.Point(161, 11);
-            this.lblDataEntry.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDataEntry.Location = new System.Drawing.Point(121, 9);
             this.lblDataEntry.Name = "lblDataEntry";
-            this.lblDataEntry.Size = new System.Drawing.Size(348, 17);
+            this.lblDataEntry.Size = new System.Drawing.Size(270, 13);
             this.lblDataEntry.TabIndex = 3;
             this.lblDataEntry.Text = "Data Entry and Display for SamLia Corporation";
             // 
@@ -128,10 +124,9 @@
             this.lblCreate.AutoSize = true;
             this.lblCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCreate.ForeColor = System.Drawing.Color.Red;
-            this.lblCreate.Location = new System.Drawing.Point(49, 57);
-            this.lblCreate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCreate.Location = new System.Drawing.Point(37, 46);
             this.lblCreate.Name = "lblCreate";
-            this.lblCreate.Size = new System.Drawing.Size(664, 17);
+            this.lblCreate.Size = new System.Drawing.Size(522, 13);
             this.lblCreate.TabIndex = 4;
             this.lblCreate.Text = "To CREATE a new client, manager or worker, always press the button below before t" +
     "yping.";
@@ -141,10 +136,9 @@
             this.lblToFind.AutoSize = true;
             this.lblToFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblToFind.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.lblToFind.Location = new System.Drawing.Point(49, 155);
-            this.lblToFind.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblToFind.Location = new System.Drawing.Point(37, 126);
             this.lblToFind.Name = "lblToFind";
-            this.lblToFind.Size = new System.Drawing.Size(802, 17);
+            this.lblToFind.Size = new System.Drawing.Size(636, 13);
             this.lblToFind.TabIndex = 5;
             this.lblToFind.Text = "To FIND/SEARCH, Edit/UPDATE or DELETE enter person ID and Select appropriate cont" +
     "rol at buttom of form.";
@@ -152,153 +146,136 @@
             // lblID
             // 
             this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(29, 36);
-            this.lblID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblID.Location = new System.Drawing.Point(22, 29);
             this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(21, 17);
+            this.lblID.Size = new System.Drawing.Size(18, 13);
             this.lblID.TabIndex = 7;
             this.lblID.Text = "ID";
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(227, 36);
-            this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblName.Location = new System.Drawing.Point(170, 29);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(45, 17);
+            this.lblName.Size = new System.Drawing.Size(35, 13);
             this.lblName.TabIndex = 8;
             this.lblName.Text = "Name";
             // 
             // lblBirthDate
             // 
             this.lblBirthDate.AutoSize = true;
-            this.lblBirthDate.Location = new System.Drawing.Point(455, 36);
-            this.lblBirthDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBirthDate.Location = new System.Drawing.Point(341, 29);
             this.lblBirthDate.Name = "lblBirthDate";
-            this.lblBirthDate.Size = new System.Drawing.Size(71, 17);
+            this.lblBirthDate.Size = new System.Drawing.Size(54, 13);
             this.lblBirthDate.TabIndex = 9;
             this.lblBirthDate.Text = "Birth Date";
             // 
             // lblType
             // 
             this.lblType.AutoSize = true;
-            this.lblType.Location = new System.Drawing.Point(19, 33);
-            this.lblType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblType.Location = new System.Drawing.Point(14, 27);
             this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(40, 17);
+            this.lblType.Size = new System.Drawing.Size(31, 13);
             this.lblType.TabIndex = 11;
             this.lblType.Text = "Type";
             // 
             // lblJobTitle
             // 
             this.lblJobTitle.AutoSize = true;
-            this.lblJobTitle.Location = new System.Drawing.Point(19, 31);
-            this.lblJobTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblJobTitle.Location = new System.Drawing.Point(14, 25);
             this.lblJobTitle.Name = "lblJobTitle";
-            this.lblJobTitle.Size = new System.Drawing.Size(62, 17);
+            this.lblJobTitle.Size = new System.Drawing.Size(47, 13);
             this.lblJobTitle.TabIndex = 13;
             this.lblJobTitle.Text = "Job Title";
             // 
             // lblSalary
             // 
             this.lblSalary.AutoSize = true;
-            this.lblSalary.Location = new System.Drawing.Point(25, 31);
-            this.lblSalary.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSalary.Location = new System.Drawing.Point(19, 25);
             this.lblSalary.Name = "lblSalary";
-            this.lblSalary.Size = new System.Drawing.Size(48, 17);
+            this.lblSalary.Size = new System.Drawing.Size(36, 13);
             this.lblSalary.TabIndex = 15;
             this.lblSalary.Text = "Salary";
             // 
             // lblBonus
             // 
             this.lblBonus.AutoSize = true;
-            this.lblBonus.Location = new System.Drawing.Point(28, 64);
-            this.lblBonus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBonus.Location = new System.Drawing.Point(21, 52);
             this.lblBonus.Name = "lblBonus";
-            this.lblBonus.Size = new System.Drawing.Size(48, 17);
+            this.lblBonus.Size = new System.Drawing.Size(37, 13);
             this.lblBonus.TabIndex = 16;
             this.lblBonus.Text = "Bonus";
             // 
             // lblHourlyPay
             // 
             this.lblHourlyPay.AutoSize = true;
-            this.lblHourlyPay.Location = new System.Drawing.Point(25, 27);
-            this.lblHourlyPay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblHourlyPay.Location = new System.Drawing.Point(19, 22);
             this.lblHourlyPay.Name = "lblHourlyPay";
-            this.lblHourlyPay.Size = new System.Drawing.Size(77, 17);
+            this.lblHourlyPay.Size = new System.Drawing.Size(58, 13);
             this.lblHourlyPay.TabIndex = 18;
             this.lblHourlyPay.Text = "Hourly Pay";
             // 
             // txtPersonID
             // 
-            this.txtPersonID.Location = new System.Drawing.Point(67, 32);
-            this.txtPersonID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPersonID.Location = new System.Drawing.Point(50, 26);
             this.txtPersonID.Name = "txtPersonID";
-            this.txtPersonID.Size = new System.Drawing.Size(132, 22);
-            this.txtPersonID.TabIndex = 19;
+            this.txtPersonID.Size = new System.Drawing.Size(100, 20);
+            this.txtPersonID.TabIndex = 0;
             // 
             // txtPersonName
             // 
-            this.txtPersonName.Location = new System.Drawing.Point(289, 32);
-            this.txtPersonName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPersonName.Location = new System.Drawing.Point(217, 26);
             this.txtPersonName.Name = "txtPersonName";
-            this.txtPersonName.Size = new System.Drawing.Size(132, 22);
+            this.txtPersonName.Size = new System.Drawing.Size(100, 20);
             this.txtPersonName.TabIndex = 20;
             // 
             // txtPersonBirthDate
             // 
-            this.txtPersonBirthDate.Location = new System.Drawing.Point(535, 32);
-            this.txtPersonBirthDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPersonBirthDate.Location = new System.Drawing.Point(401, 26);
             this.txtPersonBirthDate.Name = "txtPersonBirthDate";
-            this.txtPersonBirthDate.Size = new System.Drawing.Size(132, 22);
+            this.txtPersonBirthDate.Size = new System.Drawing.Size(100, 20);
             this.txtPersonBirthDate.TabIndex = 21;
             // 
             // txtClientType
             // 
-            this.txtClientType.Location = new System.Drawing.Point(83, 31);
-            this.txtClientType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtClientType.Location = new System.Drawing.Point(62, 25);
             this.txtClientType.Name = "txtClientType";
-            this.txtClientType.Size = new System.Drawing.Size(132, 22);
+            this.txtClientType.Size = new System.Drawing.Size(100, 20);
             this.txtClientType.TabIndex = 22;
             // 
             // txtEmployeeJobTitle
             // 
-            this.txtEmployeeJobTitle.Location = new System.Drawing.Point(89, 23);
-            this.txtEmployeeJobTitle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmployeeJobTitle.Location = new System.Drawing.Point(67, 19);
             this.txtEmployeeJobTitle.Name = "txtEmployeeJobTitle";
-            this.txtEmployeeJobTitle.Size = new System.Drawing.Size(327, 22);
+            this.txtEmployeeJobTitle.Size = new System.Drawing.Size(246, 20);
             this.txtEmployeeJobTitle.TabIndex = 23;
             // 
             // txtManagerSalary
             // 
-            this.txtManagerSalary.Location = new System.Drawing.Point(91, 27);
-            this.txtManagerSalary.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtManagerSalary.Location = new System.Drawing.Point(68, 22);
             this.txtManagerSalary.Name = "txtManagerSalary";
-            this.txtManagerSalary.Size = new System.Drawing.Size(132, 22);
+            this.txtManagerSalary.Size = new System.Drawing.Size(100, 20);
             this.txtManagerSalary.TabIndex = 24;
             // 
             // txtManagerBonus
             // 
-            this.txtManagerBonus.Location = new System.Drawing.Point(91, 60);
-            this.txtManagerBonus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtManagerBonus.Location = new System.Drawing.Point(68, 49);
             this.txtManagerBonus.Name = "txtManagerBonus";
-            this.txtManagerBonus.Size = new System.Drawing.Size(132, 22);
+            this.txtManagerBonus.Size = new System.Drawing.Size(100, 20);
             this.txtManagerBonus.TabIndex = 25;
             // 
             // txtWorkerHourlyPay
             // 
-            this.txtWorkerHourlyPay.Location = new System.Drawing.Point(125, 23);
-            this.txtWorkerHourlyPay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtWorkerHourlyPay.Location = new System.Drawing.Point(94, 19);
             this.txtWorkerHourlyPay.Name = "txtWorkerHourlyPay";
-            this.txtWorkerHourlyPay.Size = new System.Drawing.Size(132, 22);
+            this.txtWorkerHourlyPay.Size = new System.Drawing.Size(100, 20);
             this.txtWorkerHourlyPay.TabIndex = 26;
             // 
             // btnFindDisplay
             // 
-            this.btnFindDisplay.Location = new System.Drawing.Point(48, 33);
-            this.btnFindDisplay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnFindDisplay.Location = new System.Drawing.Point(36, 27);
             this.btnFindDisplay.Name = "btnFindDisplay";
-            this.btnFindDisplay.Size = new System.Drawing.Size(100, 28);
+            this.btnFindDisplay.Size = new System.Drawing.Size(75, 23);
             this.btnFindDisplay.TabIndex = 27;
             this.btnFindDisplay.Text = "Find/Display";
             this.btnFindDisplay.UseVisualStyleBackColor = true;
@@ -306,10 +283,9 @@
             // 
             // btnEditUpdate
             // 
-            this.btnEditUpdate.Location = new System.Drawing.Point(199, 33);
-            this.btnEditUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEditUpdate.Location = new System.Drawing.Point(149, 27);
             this.btnEditUpdate.Name = "btnEditUpdate";
-            this.btnEditUpdate.Size = new System.Drawing.Size(100, 28);
+            this.btnEditUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnEditUpdate.TabIndex = 28;
             this.btnEditUpdate.Text = "Edit/Update";
             this.btnEditUpdate.UseVisualStyleBackColor = true;
@@ -317,10 +293,9 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(492, 33);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDelete.Location = new System.Drawing.Point(369, 27);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(100, 28);
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 29;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -328,10 +303,9 @@
             // 
             // btnClearForm
             // 
-            this.btnClearForm.Location = new System.Drawing.Point(798, 210);
-            this.btnClearForm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClearForm.Location = new System.Drawing.Point(598, 171);
             this.btnClearForm.Name = "btnClearForm";
-            this.btnClearForm.Size = new System.Drawing.Size(100, 52);
+            this.btnClearForm.Size = new System.Drawing.Size(75, 42);
             this.btnClearForm.TabIndex = 30;
             this.btnClearForm.Text = "Clear Form Entries";
             this.btnClearForm.UseVisualStyleBackColor = true;
@@ -341,10 +315,9 @@
             // 
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.Color.Red;
-            this.btnExit.Location = new System.Drawing.Point(797, 289);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExit.Location = new System.Drawing.Point(598, 235);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(100, 28);
+            this.btnExit.Size = new System.Drawing.Size(75, 23);
             this.btnExit.TabIndex = 31;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -355,21 +328,18 @@
             this.grpEntryControl.Controls.Add(this.btnWorker);
             this.grpEntryControl.Controls.Add(this.btnManager);
             this.grpEntryControl.Controls.Add(this.btnClient);
-            this.grpEntryControl.Location = new System.Drawing.Point(99, 81);
-            this.grpEntryControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpEntryControl.Location = new System.Drawing.Point(74, 66);
             this.grpEntryControl.Name = "grpEntryControl";
-            this.grpEntryControl.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.grpEntryControl.Size = new System.Drawing.Size(471, 57);
+            this.grpEntryControl.Size = new System.Drawing.Size(353, 46);
             this.grpEntryControl.TabIndex = 34;
             this.grpEntryControl.TabStop = false;
             this.grpEntryControl.Text = "Controls for Creating a New Entry";
             // 
             // btnWorker
             // 
-            this.btnWorker.Location = new System.Drawing.Point(311, 23);
-            this.btnWorker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnWorker.Location = new System.Drawing.Point(233, 19);
             this.btnWorker.Name = "btnWorker";
-            this.btnWorker.Size = new System.Drawing.Size(121, 28);
+            this.btnWorker.Size = new System.Drawing.Size(91, 23);
             this.btnWorker.TabIndex = 44;
             this.btnWorker.Text = "Create Worker";
             this.btnWorker.UseVisualStyleBackColor = true;
@@ -377,10 +347,9 @@
             // 
             // btnManager
             // 
-            this.btnManager.Location = new System.Drawing.Point(148, 23);
-            this.btnManager.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnManager.Location = new System.Drawing.Point(111, 19);
             this.btnManager.Name = "btnManager";
-            this.btnManager.Size = new System.Drawing.Size(124, 28);
+            this.btnManager.Size = new System.Drawing.Size(93, 23);
             this.btnManager.TabIndex = 43;
             this.btnManager.Text = "Create Manager";
             this.btnManager.UseVisualStyleBackColor = true;
@@ -388,10 +357,9 @@
             // 
             // btnClient
             // 
-            this.btnClient.Location = new System.Drawing.Point(6, 21);
-            this.btnClient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClient.Location = new System.Drawing.Point(4, 17);
             this.btnClient.Name = "btnClient";
-            this.btnClient.Size = new System.Drawing.Size(100, 28);
+            this.btnClient.Size = new System.Drawing.Size(75, 23);
             this.btnClient.TabIndex = 42;
             this.btnClient.Text = "Create Client";
             this.btnClient.UseVisualStyleBackColor = true;
@@ -401,11 +369,9 @@
             // 
             this.grpClient.Controls.Add(this.lblType);
             this.grpClient.Controls.Add(this.txtClientType);
-            this.grpClient.Location = new System.Drawing.Point(32, 77);
-            this.grpClient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpClient.Location = new System.Drawing.Point(24, 63);
             this.grpClient.Name = "grpClient";
-            this.grpClient.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.grpClient.Size = new System.Drawing.Size(635, 73);
+            this.grpClient.Size = new System.Drawing.Size(476, 59);
             this.grpClient.TabIndex = 35;
             this.grpClient.TabStop = false;
             this.grpClient.Text = "Client";
@@ -414,11 +380,9 @@
             // 
             this.grpEmployee.Controls.Add(this.lblJobTitle);
             this.grpEmployee.Controls.Add(this.txtEmployeeJobTitle);
-            this.grpEmployee.Location = new System.Drawing.Point(32, 168);
-            this.grpEmployee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpEmployee.Location = new System.Drawing.Point(24, 136);
             this.grpEmployee.Name = "grpEmployee";
-            this.grpEmployee.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.grpEmployee.Size = new System.Drawing.Size(635, 85);
+            this.grpEmployee.Size = new System.Drawing.Size(476, 69);
             this.grpEmployee.TabIndex = 36;
             this.grpEmployee.TabStop = false;
             this.grpEmployee.Text = "Employee";
@@ -429,11 +393,9 @@
             this.grpManager.Controls.Add(this.txtManagerSalary);
             this.grpManager.Controls.Add(this.lblBonus);
             this.grpManager.Controls.Add(this.txtManagerBonus);
-            this.grpManager.Location = new System.Drawing.Point(32, 272);
-            this.grpManager.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpManager.Location = new System.Drawing.Point(24, 221);
             this.grpManager.Name = "grpManager";
-            this.grpManager.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.grpManager.Size = new System.Drawing.Size(289, 101);
+            this.grpManager.Size = new System.Drawing.Size(217, 82);
             this.grpManager.TabIndex = 37;
             this.grpManager.TabStop = false;
             this.grpManager.Text = "Manager";
@@ -442,11 +404,9 @@
             // 
             this.grpWorker.Controls.Add(this.lblHourlyPay);
             this.grpWorker.Controls.Add(this.txtWorkerHourlyPay);
-            this.grpWorker.Location = new System.Drawing.Point(368, 272);
-            this.grpWorker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpWorker.Location = new System.Drawing.Point(276, 221);
             this.grpWorker.Name = "grpWorker";
-            this.grpWorker.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.grpWorker.Size = new System.Drawing.Size(299, 101);
+            this.grpWorker.Size = new System.Drawing.Size(224, 82);
             this.grpWorker.TabIndex = 38;
             this.grpWorker.TabStop = false;
             this.grpWorker.Text = "Worker";
@@ -467,21 +427,18 @@
             this.grpPerson.Controls.Add(this.grpClient);
             this.grpPerson.Controls.Add(this.lblBirthDate);
             this.grpPerson.Controls.Add(this.txtPersonID);
-            this.grpPerson.Location = new System.Drawing.Point(99, 193);
-            this.grpPerson.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpPerson.Location = new System.Drawing.Point(74, 157);
             this.grpPerson.Name = "grpPerson";
-            this.grpPerson.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.grpPerson.Size = new System.Drawing.Size(691, 459);
+            this.grpPerson.Size = new System.Drawing.Size(518, 373);
             this.grpPerson.TabIndex = 39;
             this.grpPerson.TabStop = false;
             this.grpPerson.Text = "Person";
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(368, 404);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancel.Location = new System.Drawing.Point(276, 328);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(145, 28);
+            this.btnCancel.Size = new System.Drawing.Size(109, 23);
             this.btnCancel.TabIndex = 23;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -494,21 +451,19 @@
             this.grpFormControl.Controls.Add(this.btnFindDisplay);
             this.grpFormControl.Controls.Add(this.btnEditUpdate);
             this.grpFormControl.Controls.Add(this.btnDelete);
-            this.grpFormControl.Location = new System.Drawing.Point(99, 660);
-            this.grpFormControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpFormControl.Location = new System.Drawing.Point(74, 536);
             this.grpFormControl.Name = "grpFormControl";
-            this.grpFormControl.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.grpFormControl.Size = new System.Drawing.Size(691, 80);
+            this.grpFormControl.Size = new System.Drawing.Size(518, 65);
             this.grpFormControl.TabIndex = 40;
             this.grpFormControl.TabStop = false;
             this.grpFormControl.Text = "Form Controls for Data Processing";
             // 
             // btndisplayList
             // 
-            this.btndisplayList.Location = new System.Drawing.Point(330, 33);
-            this.btndisplayList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btndisplayList.Location = new System.Drawing.Point(248, 27);
+            this.btndisplayList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btndisplayList.Name = "btndisplayList";
-            this.btndisplayList.Size = new System.Drawing.Size(102, 28);
+            this.btndisplayList.Size = new System.Drawing.Size(76, 23);
             this.btndisplayList.TabIndex = 41;
             this.btndisplayList.Text = "Display List";
             this.btndisplayList.UseVisualStyleBackColor = true;
@@ -516,11 +471,11 @@
             // 
             // frmEmpMan
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(978, 794);
+            this.ClientSize = new System.Drawing.Size(734, 609);
             this.Controls.Add(this.grpFormControl);
             this.Controls.Add(this.grpPerson);
             this.Controls.Add(this.grpEntryControl);
@@ -529,9 +484,8 @@
             this.Controls.Add(this.lblToFind);
             this.Controls.Add(this.lblCreate);
             this.Controls.Add(this.lblDataEntry);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmEmpMan";
-            this.Text = "Form1";
+            this.Text = "EmpMan";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmEmpMan_FormClosing);
             this.Load += new System.EventHandler(this.frmEmpMan_Load);
             this.grpEntryControl.ResumeLayout(false);

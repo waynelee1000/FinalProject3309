@@ -54,6 +54,7 @@
     <Compile Include="Classes\Person.cs" />
     <Compile Include="Classes\PersonList.cs" />
     <Compile Include="Classes\POManager.cs" />
+    <Compile Include="Classes\Validation.cs" />
     <Compile Include="Classes\Worker.cs" />
     <Compile Include="frmEmpMan.cs">
       <SubType>Form</SubType>
